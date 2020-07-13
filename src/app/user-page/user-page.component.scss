@@ -1,0 +1,21 @@
+.centered {
+    position: fixed;
+left: 50%;
+top: 35%;
+size: 5cm;
+transform: translate(-50%, 0);
+font-size: x-large;
+border-color: indianred;
+border-width: 1mm;
+border-style: dotted;
+padding: 1cm;
+}
+
+.centered-bottom {
+    position: fixed;
+left: 50%;
+top: 40%;
+size: 5cm;
+transform: translate(-50%, 0);
+font-size: medium;
+}

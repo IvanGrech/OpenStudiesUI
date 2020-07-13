@@ -1,0 +1,28 @@
+<div class="centered">
+    <div>
+        <form (ngSubmit)="doLogin()" #userForm="ngForm" >
+            <div class="form-group row" id="loginInputDiv">
+                <label for="login" class="col-sm-2 col-form-label">Login:</label>
+                <div class="col-sm-3">
+                    <input type="text" id="login"  name="login" [(ngModel)]="dto.login" pattern="[a-zA-Z0-9_-]{1,}" required/>
+                </div>
+            </div>
+
+            <div class="form-group row" id="loginInputDiv">
+                <label for="passwordId" class="col-sm-2 col-form-label">Password:</label>
+                <div class="col-sm-3">
+                    <input id="password" type="password" name="password" [(ngModel)]="dto.password" pattern="[a-zA-Z0-9_-]{1,}" required/>
+                </div>
+            </div>
+
+            <br><div class="alert alert-danger" role="alert" align="center" [hidden]="!error">Login or password is incorrect</div>
+
+            <div class="loginButtons">
+                <button class="btn btn-primary btn-lg">
+                    <input (click)="doLogin()" type="submit" hidden>Sign in
+                </button>
+            </div>
+            
+        </form>
+    </div>
+</div>

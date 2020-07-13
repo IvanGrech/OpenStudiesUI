@@ -1,0 +1,38 @@
+<table class =  "table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Login</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Role</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let user of users">
+        <tr >
+            <td>
+                {{user.login}}
+            </td>
+            <td>
+                {{user.firstName}}
+            </td>
+            <td>
+                {{user.lastName}}
+            </td>
+            <td>
+                {{user.birthday|date:'MM/dd/yyyy'}}
+            </td>
+            <td>
+                {{user.role.name}}
+            </td>
+            <td>
+                <form>
+                    <input type="hidden" name="id" [value]="user.id" >
+                    <button  class="btn btn-primary" [value]="user.id" (click)="goToEditUser($event)">Edit</button>
+                    <button  class="btn btn-danger delete-button" [value]="user.id" (click)="deleteUser($event)">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table> 

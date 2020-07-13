@@ -1,0 +1,84 @@
+<header style="font-size: xx-large; text-align: center;">Edit user</header>
+<form action="edit" method="PUT" (ngSubmit)="doEdit()" #userForm="ngForm">
+    <div class="form-group row">
+        <label for="loginId" class="col-sm-2 col-form-label">Login</label>
+        <div class="col-sm-3">
+            <input class="form-control" id="loginId" name="login" [(ngModel)]="dto.login" readonly/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="passwordId" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-3">
+            <input type="password" class="form-control" id="passwordId" name="password"  (change)="validatePassword()" [(ngModel)]="dto.password" pattern="[A-Za-z0-9]{4,16}"/>
+            <p id="passwordError" style="display:run-in;">Password must be 4-16 characters long. No Spaces</p>
+            <p class="errorMessage">{{errors.password}}</p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="passwordAgainId" class="col-sm-2 col-form-label">Confirm Password</label>
+        <div class="col-sm-3">
+            <input type="password" class="form-control" id="passwordAgainId"  name="repeatPassword" [(ngModel)]="dto.repeatPassword" (keyup)="validatePassword()"
+                pattern="[A-Za-z0-9]{4,16}"/>
+            <p id="repeatPasswordError" style="display:run-in;">Passwords must match</p>
+            <p class="errorMessage">{{errors.repeatPassword}}</p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="emailId" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-3">
+            <input type="email" class="form-control" id="emailId" name="email"  [(ngModel)]="dto.email" 
+                pattern="[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+" required="true" />
+                <span></span>
+                <p class="errorMessage">{{errors.email}}</p>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="firstNameId" class="col-sm-2 col-form-label">First Name</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="firstNameId" name="firstName" pattern="[A-Za-z]{2,32}" [(ngModel)]="dto.firstName" 
+              required="true" />
+              <span></span>
+              <p class="errorMessage">{{errors.firstName}}</p>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="lastNameId" class="col-sm-2 col-form-label">Last Name</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="lastNameId" name="lastName" pattern="[A-Za-z]{2,32}"  [(ngModel)]="dto.lastName"
+                 required="true" />
+                 <span></span>
+                 <p class="errorMessage">{{errors.lastName}}</p>
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <label for="birthdayId" class="col-sm-2 col-form-label">Birthday</label>
+        <div class="col-sm-3">
+            <input type="date" class="form-control" id="birthdayId" name="birthday" min="1950-01-01" max="2010-01-01"  [(ngModel)]="dto.birthday"
+               required="true" />
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <label for="roleSelectId" class="col-sm-2 col-form-label">Role</label>
+        <div class="col-sm-3">
+            <select class="custom-select" id="roleSelectId" name="role"  [(ngModel)]="dto.role.name" required>
+                <option value="user">user</option>
+                <option value="admin">admin</option>
+            </select>
+            <p class="errorMessage">{{errors.role}}</p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary">Ok</button>
+            <a routerLink="/admin/"><button class="btn btn-secondary">Cancel</button></a>
+            
+        </div>
+    </div>
+</form>
+

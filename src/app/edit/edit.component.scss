@@ -1,0 +1,18 @@
+input:required:not(:placeholder-shown) {
+    border-color: hsl(0, 76%, 50%);;
+  }
+
+
+  input:required:not(:placeholder-shown) + p {
+    display: inherit;
+    font-size: x-small;
+  }
+  
+  /* Show green borders when valid */
+  input:valid:required {
+    border-color: hsl(120, 76%, 50%);
+  }
+
+  input:valid + p  {
+    display: none; 
+  }

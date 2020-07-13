@@ -1,0 +1,37 @@
+#userCredentials {
+    position: fixed;
+    top: 10%; 
+    right:10%;
+    padding-bottom: 2cm;
+    margin-bottom: 2cm;
+}
+
+#logoutLink {
+    position: fixed;
+      top: 10%; 
+      right:5%;
+      padding-bottom: 2cm;
+      margin-bottom: 2cm;
+}
+
+input:not(:placeholder-shown) {
+    border-color: hsl(0, 76%, 50%);;
+  }
+
+
+  input:not(:placeholder-shown) + p {
+    display: inherit;
+    font-size: x-small;
+  }
+  
+  /* Show green borders when valid */
+  input:valid {
+    border-color: hsl(120, 76%, 50%);
+  }
+
+  input:valid + p  {
+    display: none; 
+  }
+  .errorMessage {
+    text-decoration: underline;
+  }
