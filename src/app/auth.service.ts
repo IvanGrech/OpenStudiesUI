@@ -6,12 +6,13 @@ import { LoginDto} from '../app/forms/loginDto';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
+import * as properties from '../properties';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl: string = 'http://localhost:80/OpenStudies/login';
+  private apiUrl: string = properties.loginUrl;
 
   constructor(private http: HttpClient, private router: Router) { }
 
