@@ -7,12 +7,12 @@ import { User } from './models/user';
 import { Role } from './models/role';
 import { SignUpDto } from './forms/signUpDto';
 
-
+import * as properties from '../properties';
 
 
 @Injectable()
 export class UserService {
-  private apiUrl: string = 'http://localhost:80/OpenStudies/';
+  private apiUrl: string = properties.mainUrl;
   private userSource = new BehaviorSubject<User>(new User(0, new Role("user",2),"","","","","",""));
   currentUser = this.userSource.asObservable();
 
