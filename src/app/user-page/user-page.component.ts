@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import {AuthService} from '../auth.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class UserPageComponent  {
   lname: string;
 
   constructor(private auth: AuthService){
-    var token = auth.getDecodedToken();
+    var token = this.auth.getDecodedToken();
     this.fname =  token.firstName;
     this.lname = token.lastName;
   }

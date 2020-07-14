@@ -11,10 +11,6 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
 
-  login: string;
-  password: string;
-  message: any;
-
   dto = new LoginDto("", "");
   error : boolean;
 
