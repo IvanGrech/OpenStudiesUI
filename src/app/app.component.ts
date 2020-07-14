@@ -13,13 +13,11 @@ export class AppComponent implements OnInit{
   
   public fname: string;
   public lname: string;
-  private reloaded: boolean = false;
   
   ngOnInit(): void {
 
   }
  
-  
   constructor(private http: HttpClient, private router: Router, private authService: AuthService) {
   }
 

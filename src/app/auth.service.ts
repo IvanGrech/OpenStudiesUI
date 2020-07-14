@@ -16,10 +16,6 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-
-
-
-
   public login(dto : LoginDto){
     return this.http.post<any>(this.apiUrl, dto,)
     .pipe(map(tokenDto=>{

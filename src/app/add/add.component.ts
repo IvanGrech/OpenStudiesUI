@@ -20,8 +20,6 @@ export class AddComponent implements OnInit {
 
   }
 
-
-
   validatePassword() {
     this.authService.validatePassword();
   }
