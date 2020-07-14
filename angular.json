@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "UserApp": {
+    "OpenStudies": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/UserApp",
+            "outputPath": "dist/OpenStudies",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "UserApp:build"
+            "browserTarget": "OpenStudies:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "UserApp:build:production"
+              "browserTarget": "OpenStudies:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "UserApp:build"
+            "browserTarget": "OpenStudies:build"
           }
         },
         "test": {
@@ -115,15 +115,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "UserApp:serve"
+            "devServerTarget": "OpenStudies:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "UserApp:serve:production"
+              "devServerTarget": "OpenStudies:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "UserApp"
+  "defaultProject": "OpenStudies"
 }

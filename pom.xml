@@ -75,7 +75,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <webResources>
                         <resource>
-                            <directory>dist/UserApp</directory>
+                            <directory>dist/OpenStudies</directory>
                         </resource>
                     </webResources>
                 </configuration>
