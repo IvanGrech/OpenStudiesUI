@@ -2,21 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserPageComponent } from './user-page/user-page.component';
-import { LoginComponent } from './login/login.component';
+import { UserPageComponent } from './components/user-page/user-page.component';
+import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UserService } from './user.service';
 import { FormsModule } from '@angular/forms';
-import { AdminHomeComponent } from './admin-home/admin-home.component';
-import { AddComponent } from './add/add.component';
-import { EditComponent } from './edit/edit.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AddComponent } from './components/add/add.component';
+import { EditComponent } from './components/edit/edit.component';
 import { AuthService } from './auth.service';
 import {
   RoleGuardService as RoleGuard
 } from './role-guard.service';
-import { SignupComponent } from './signup/signup.component';
+import { SignupComponent } from './components/signup/signup.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 

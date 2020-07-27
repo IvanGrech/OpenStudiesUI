@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AddDto } from '../forms/addDto';
-import { UserService } from '../user.service';
+import { AddDto } from '../../forms/addDto';
+import { UserService } from '../../user.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
-import { Role } from '../models/role';
+import { AuthService } from '../../auth.service';
+import { Role } from '../../models/role';
 
 
 
