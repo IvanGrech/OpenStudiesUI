@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AddDto } from '../app/forms/addDto';
+import { AddDto } from '../forms/addDto';
 import {BehaviorSubject} from 'rxjs';
-import { User } from './models/user';
-import { Role } from './models/role';
-import { SignUpDto } from './forms/signUpDto';
+import { User } from '../models/user';
+import { Role } from '../models/role';
+import { SignUpDto } from '../forms/signUpDto';
 
-import * as properties from '../properties';
+import * as properties from '../../properties';
 
 
 @Injectable()
@@ -46,7 +46,6 @@ export class UserService {
   }
 
   signupUser(dto: SignUpDto) {
-    
     return this.http.post<any>(this.apiUrl + 'signup', dto)
   }
 

@@ -7,17 +7,21 @@ import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { UserService } from './user.service';
+import { UserService } from './services/user.service';
 import { FormsModule } from '@angular/forms';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AddComponent } from './components/add/add.component';
 import { EditComponent } from './components/edit/edit.component';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import {
   RoleGuardService as RoleGuard
-} from './role-guard.service';
+} from './services/role-guard.service';
 import { SignupComponent } from './components/signup/signup.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CreateCourseDialogComponent } from './components/dialogs/create-course-dialog/create-course-dialog.component';
+import { CourseService } from './services/course.service';
 
 
 
@@ -56,7 +60,8 @@ const appRoutes: Routes = [
     AdminHomeComponent,
     AddComponent,
     EditComponent,
-    SignupComponent
+    SignupComponent,
+    CreateCourseDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,9 +70,14 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, { enableTracing: false }),
     FormsModule,
     RecaptchaModule,
-    RecaptchaFormsModule
+    RecaptchaFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
-  providers: [UserService, AuthService, RoleGuard],
+  entryComponents: [
+    CreateCourseDialogComponent
+  ],
+  providers: [CourseService, UserService, AuthService, RoleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
