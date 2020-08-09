@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Router } from '@angular/router';
-import { LoginDto} from '../app/forms/loginDto';
+import { LoginDto} from '../forms/loginDto';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import * as properties from '../properties';
+import * as properties from '../../properties';
 
 @Injectable({
   providedIn: 'root'

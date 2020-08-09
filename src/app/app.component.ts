@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { CreateCourseDialogComponent } from './components/dialogs/create-course-dialog/create-course-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit{
 
   }
  
-  constructor(private http: HttpClient, private router: Router, private authService: AuthService) {
+  constructor(public dialog: MatDialog, private router: Router, private authService: AuthService) {
   }
 
   isLoggedIn(): boolean{
@@ -29,6 +30,16 @@ export class AppComponent implements OnInit{
 
   isAdmin(): boolean {
     return this.authService.isAdmin();
+  }
+
+  showCreateCourseDialog() {
+    const dialogRef = this.dialog.open(CreateCourseDialogComponent, {
+      width: '50%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      //add message about the result here (maybe a new dialog)
+    });
   }
 
   logout(){
