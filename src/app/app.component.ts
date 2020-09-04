@@ -34,7 +34,7 @@ export class AppComponent implements OnInit{
 
   showCreateCourseDialog() {
     const dialogRef = this.dialog.open(CreateCourseDialogComponent, {
-      width: '50%'
+      width: '20%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
