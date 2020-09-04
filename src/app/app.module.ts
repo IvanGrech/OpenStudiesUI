@@ -22,6 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateCourseDialogComponent } from './components/dialogs/create-course-dialog/create-course-dialog.component';
 import { CourseService } from './services/course.service';
+import { CoursesListComponent } from './components/courses-list/courses-list.component';
+
 
 
 
@@ -61,7 +63,8 @@ const appRoutes: Routes = [
     AddComponent,
     EditComponent,
     SignupComponent,
-    CreateCourseDialogComponent
+    CreateCourseDialogComponent,
+    CoursesListComponent
   ],
   imports: [
     BrowserModule,
