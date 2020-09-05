@@ -31,6 +31,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent,  data: { title: 'Login' } },
   { path: 'signup', component: SignupComponent,  data: { title: 'Signup' } },
   { path: 'home', component: UserPageComponent,canActivate: [RoleGuard], data: { title: 'Home', expectedRole: 'user' } },
+  { path: 'mycourses', component: CoursesListComponent,  data: { title: 'My Courses' } },
   {
     path: 'admin/add', component: AddComponent, canActivate: [RoleGuard],
     data: {

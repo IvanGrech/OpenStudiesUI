@@ -32,6 +32,11 @@
         <a class="nav-link" (click)="showCreateCourseDialog()">Create Course</a>
       </li>
     </ul>
+    <ul *ngIf="isLoggedIn() && !isAdmin()" class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/mycourses">View My Courses</a>
+      </li>
+    </ul>
 
     <ul  *ngIf="isLoggedIn()" class="nav navbar-nav ml-auto w-100 justify-content-end">
       <span class="navbar-text" style="color: black; text-decoration: underline;">

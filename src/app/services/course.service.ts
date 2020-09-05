@@ -14,7 +14,12 @@ export class CourseService {
   
   createCourse(course: CourseData, token: any) {
     const headers = new HttpHeaders({ Authorization: 'Bearer ' + token });
-    return this.http.post<any>(this.apiUrl + '/create', course, { headers })
+    return this.http.post<any>(this.apiUrl + '/create', course, { headers });
+  }
+
+  getOwnedCourses(login: String, token: any) {
+    const headers = new HttpHeaders({ Authorization: 'Bearer ' + token });
+    return this.http.get<any>(this.apiUrl + '/owner/' + login, { headers });
   }
 
 }

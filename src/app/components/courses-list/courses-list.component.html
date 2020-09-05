@@ -1,1 +1,10 @@
-<p>courses-list works!</p>
+<div class="container">
+    <div *ngFor="let course of courses">
+        <div class="jumbotron">
+            <h1 class="display-4">{{course.tag}}</h1>
+            <hr class="my-4">
+            <p class="lead">{{course.description}}</p>
+            <button class="btn btn-primary btn-lg" [value]="course.id">View</button>
+        </div>
+    </div>
+</div>
