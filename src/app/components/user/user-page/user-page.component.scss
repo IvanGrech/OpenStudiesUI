@@ -1,0 +1,25 @@
+.container {
+    margin: 0px auto;
+    padding-top: 5%;
+    padding-left: 50%;
+    padding-right: 50%;
+    
+}
+
+.container div {
+    background-color: blue;
+}
+
+.container button  {
+    font-size: x-large;
+   
+}
+
+.centered-bottom {
+    position: fixed;
+left: 50%;
+top: 40%;
+size: 5cm;
+transform: translate(-50%, 0);
+font-size: medium;
+}

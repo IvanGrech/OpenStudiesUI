@@ -43,7 +43,6 @@ export class AppComponent implements OnInit{
   }
 
   logout(){
-    console.log("in logout")
     localStorage.removeItem('token')
     localStorage.removeItem('decodedToken')
     this.router.navigate(['/login'])
