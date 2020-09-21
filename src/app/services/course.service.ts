@@ -17,6 +17,12 @@ export class CourseService {
     return this.http.post<any>(this.apiUrl + '/create', course, { headers });
   }
 
+
+  deleteCourse(id: Number, token: any) {
+    const headers = new HttpHeaders({ Authorization: 'Bearer ' + token });
+    return this.http.delete<any>(this.apiUrl + '/' + id, { headers });
+  }
+
   getOwnedCourses(login: String, token: any) {
     const headers = new HttpHeaders({ Authorization: 'Bearer ' + token });
     return this.http.get<any>(this.apiUrl + '/owner/' + login, { headers });
