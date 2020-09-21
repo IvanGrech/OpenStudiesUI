@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { CreateCourseDialogComponent } from './components/dialogs/create-course-dialog/create-course-dialog.component';
+import { CreateCourseDialogComponent } from './components/misc/create-course-dialog/create-course-dialog.component';
 
 @Component({
   selector: 'app-root',

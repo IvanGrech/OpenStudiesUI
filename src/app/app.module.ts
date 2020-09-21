@@ -20,7 +20,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-import { CreateCourseDialogComponent } from './components/dialogs/create-course-dialog/create-course-dialog.component';
+import { CreateCourseDialogComponent } from './components/misc/create-course-dialog/create-course-dialog.component';
 import { CourseService } from './services/course.service';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
 
