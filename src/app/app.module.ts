@@ -23,6 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CreateCourseDialogComponent } from './components/misc/create-course-dialog/create-course-dialog.component';
 import { CourseService } from './services/course.service';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
+import { LoadingSpinnerComponent } from './components/misc/loading-spinner/loading-spinner.component';
 
 
 
@@ -65,7 +66,8 @@ const appRoutes: Routes = [
     EditComponent,
     SignupComponent,
     CreateCourseDialogComponent,
-    CoursesListComponent
+    CoursesListComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

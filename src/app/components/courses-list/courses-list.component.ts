@@ -10,12 +10,14 @@ import { AuthService } from 'src/app/services/auth.service';
 export class CoursesListComponent implements OnInit {
 
   public courses: any = [];
+  showSpinner: boolean = true;
 
   constructor(private courseService: CourseService, private authService: AuthService) { }
 
   ngOnInit() {
     this.courseService.getOwnedCourses(this.authService.getDecodedToken().sub, this.authService.getToken()).subscribe(result => {
       this.courses = result;
+      this.showSpinner = false;
     });
   }
 
@@ -27,7 +29,6 @@ export class CoursesListComponent implements OnInit {
         location.reload();
       });
     }
-
   }
 
 
