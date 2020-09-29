@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {CourseData} from "../../models/courseData";
 import {CourseDataService} from "../../services/course.data.service";
 import {CourseService} from "../../services/course.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateTaskDialogComponent} from "../misc/create-task-dialog/create-task-dialog.component";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-course-info',
@@ -12,14 +12,19 @@ import {CreateTaskDialogComponent} from "../misc/create-task-dialog/create-task-
 })
 export class CourseInfoComponent implements OnInit {
 
-  private course: CourseData;
+  private course: any;
+  private tasks: any[];
 
-  constructor(private courseDataService: CourseDataService, private courseService: CourseService, public dialog: MatDialog) {
+  constructor(private courseDataService: CourseDataService, private courseService: CourseService, public dialog: MatDialog, private authService: AuthService) {
   }
 
   ngOnInit() {
     this.courseDataService.currentCourse.subscribe(currentCourse => {
       this.course = currentCourse[0];
+    });
+
+    this.courseService.getCourseTasks(this.course.id, this.authService.getToken()).subscribe(response => {
+      this.tasks = response;
     });
   }
 

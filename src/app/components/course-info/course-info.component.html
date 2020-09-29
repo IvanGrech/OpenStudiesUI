@@ -3,6 +3,15 @@
   <hr class="my-4">
   <p>{{course.description}}</p>
 </div>
+
+<div class="course-tasks" *ngFor="let task of tasks">
+  <div>
+    <h1>{{task.tag}}</h1>
+    <hr class="my-4">
+    <p>{{task.description}}</p>
+  </div>
+</div>
+
 <div class="course-tasks">
   <button mat-fab color="primary">
     <mat-icon (click)="addTask()">add</mat-icon>
