@@ -5,7 +5,7 @@
             <h1 class="display-4">{{course.tag}}</h1>
             <hr class="my-4">
             <p class="lead">{{course.description}}</p>
-            <button class="btn btn-primary btn-lg" [value]="course.id">View</button>
+            <button class="btn btn-primary btn-lg" (click)='viewCourse([course])'>View</button>
             <button class="btn btn-danger btn-lg" [value]="course.id" (click)='deleteCourse($event)'>Delete</button>
     </div>
 </div>

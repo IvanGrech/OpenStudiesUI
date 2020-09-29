@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { CourseData } from 'src/app/forms/courseData';
+import { CourseData } from 'src/app/models/courseData';
 import { CourseService } from 'src/app/services/course.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';

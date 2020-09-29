@@ -24,6 +24,11 @@ import { CreateCourseDialogComponent } from './components/misc/create-course-dia
 import { CourseService } from './services/course.service';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
 import { LoadingSpinnerComponent } from './components/misc/loading-spinner/loading-spinner.component';
+import { CourseInfoComponent } from './components/course-info/course-info.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import {CourseDataService} from "./services/course.data.service";
+import { CreateTaskDialogComponent } from './components/misc/create-task-dialog/create-task-dialog.component';
 
 
 
@@ -33,6 +38,7 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent,  data: { title: 'Signup' } },
   { path: 'home', component: UserPageComponent,canActivate: [RoleGuard], data: { title: 'Home', expectedRole: 'user' } },
   { path: 'mycourses', component: CoursesListComponent,  data: { title: 'My Courses' } },
+  { path: 'course', component: CourseInfoComponent,  data: { title: 'Course' } },
   {
     path: 'admin/add', component: AddComponent, canActivate: [RoleGuard],
     data: {
@@ -67,7 +73,9 @@ const appRoutes: Routes = [
     SignupComponent,
     CreateCourseDialogComponent,
     CoursesListComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    CourseInfoComponent,
+    CreateTaskDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -78,12 +86,15 @@ const appRoutes: Routes = [
     RecaptchaModule,
     RecaptchaFormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule
   ],
   entryComponents: [
-    CreateCourseDialogComponent
+    CreateCourseDialogComponent,
+    CreateTaskDialogComponent
   ],
-  providers: [CourseService, UserService, AuthService, RoleGuard],
+  providers: [CourseService, UserService, AuthService, RoleGuard, CourseDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
