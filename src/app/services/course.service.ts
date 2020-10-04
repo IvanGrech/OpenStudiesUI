@@ -33,6 +33,11 @@ export class CourseService {
     return this.http.post<any>(this.apiUrl + '/' + id + '/tasks', task, {headers});
   }
 
+  addCourseTaskFile(id: number, taskId: number, file: FormData, token: any) {
+    const headers = new HttpHeaders({Authorization: 'Bearer ' + token});
+    return this.http.post<any>(`${this.apiUrl}/${id}/tasks/${taskId}/file`, file, {headers});
+  }
+
   getCourseTasks(id: number, token: any) {
     const headers = new HttpHeaders({Authorization: 'Bearer ' + token});
     return this.http.get<any>(this.apiUrl + '/' + id + '/tasks', {headers});

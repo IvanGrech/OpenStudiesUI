@@ -29,6 +29,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {CourseDataService} from "./services/course.data.service";
 import { CreateTaskDialogComponent } from './components/misc/create-task-dialog/create-task-dialog.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+
 
 
 
@@ -88,7 +90,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressBarModule
   ],
   entryComponents: [
     CreateCourseDialogComponent,
