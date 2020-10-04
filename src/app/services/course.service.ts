@@ -13,7 +13,7 @@ export class CourseService {
   }
 
   createCourse(course: CourseData) {
-    return this.http.post<any>(`${this.apiUrl}/create`, course, {headers: this.authService.getAuthHeaders()});
+    return this.http.post<any>(`${this.apiUrl}`, course, {headers: this.authService.getAuthHeaders()});
   }
 
   deleteCourse(id: Number) {

@@ -29,15 +29,15 @@ export class UserService {
   }
 
   getUserById(id: number) {
-    return this.http.get(`${this.apiUrl}users/id/${id}`, {headers: this.authService.getAuthHeaders()});
+    return this.http.get(`${this.apiUrl}users/${id}`, {headers: this.authService.getAuthHeaders()});
   }
 
   updateUser(dto: AddDto) {
-    return this.http.post<any>(`${this.apiUrl}users/update`, dto, {headers: this.authService.getAuthHeaders()});
+    return this.http.put<any>(`${this.apiUrl}users`, dto, {headers: this.authService.getAuthHeaders()});
   }
 
   addUser(dto: AddDto) {
-    return this.http.post<any>(`${this.apiUrl}users/create`, dto, {headers: this.authService.getAuthHeaders()});
+    return this.http.post<any>(`${this.apiUrl}users`, dto, {headers: this.authService.getAuthHeaders()});
   }
 
   signupUser(dto: SignUpDto) {
@@ -45,7 +45,7 @@ export class UserService {
   }
 
   deleteUser(id: number) {
-    return this.http.get(`${this.apiUrl}users/delete/id/${id}`, {headers: this.authService.getAuthHeaders()});
+    return this.http.delete(`${this.apiUrl}users/${id}`, {headers: this.authService.getAuthHeaders()});
   }
 }
 

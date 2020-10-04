@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
-import { AuthService } from '../../services/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-admin-home',
   templateUrl: './admin-home.component.html',
@@ -10,13 +10,13 @@ import {Router} from '@angular/router';
 export class AdminHomeComponent implements OnInit {
 
   public users: any = [];
-  
-  constructor(private userService: UserService, private authService: AuthService, private router: Router) {
-   
+
+  constructor(private userService: UserService, private router: Router) {
+
   }
 
   ngOnInit() {
-    this.userService.getAllUsers(this.authService.getToken()).subscribe(users =>
+    this.userService.getAllUsers().subscribe(users =>
       this.users = users
     );
   }
@@ -25,19 +25,19 @@ export class AdminHomeComponent implements OnInit {
     const inputId = event.target.value;
     var res = confirm('Are you sure?');
     if (res) {
-      this.userService.deleteUser(inputId, this.authService.getToken()).subscribe(response => {
+      this.userService.deleteUser(inputId).subscribe(response => {
         this.ngOnInit();
-      });        
-    } 
+      });
+    }
   }
 
 
-  goToEditUser(event: any): void{
+  goToEditUser(event: any): void {
     const inputId = event.target.value;
     var foundUser;
-    this.userService.getUserById(inputId, this.authService.getToken()).subscribe(user=>{
+    this.userService.getUserById(inputId).subscribe(user => {
       foundUser = user;
-     this.userService.setCurrentUser(foundUser);
+      this.userService.setCurrentUser(foundUser);
     })
     this.router.navigate(['/admin/edit']);
   }
