@@ -3,7 +3,6 @@ import {CourseDataService} from "../../services/course.data.service";
 import {CourseService} from "../../services/course.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateTaskDialogComponent} from "../misc/create-task-dialog/create-task-dialog.component";
-import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-course-info',
@@ -15,7 +14,7 @@ export class CourseInfoComponent implements OnInit {
   private course: any;
   private tasks: any[];
 
-  constructor(private courseDataService: CourseDataService, private courseService: CourseService, public dialog: MatDialog, private authService: AuthService) {
+  constructor(private courseDataService: CourseDataService, private courseService: CourseService, public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -23,7 +22,7 @@ export class CourseInfoComponent implements OnInit {
       this.course = currentCourse[0];
     });
 
-    this.courseService.getCourseTasks(this.course.id, this.authService.getToken()).subscribe(response => {
+    this.courseService.getCourseTasks(this.course.id).subscribe(response => {
       this.tasks = response;
     });
   }

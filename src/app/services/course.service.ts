@@ -3,44 +3,37 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import * as properties from '../../properties';
 import {CourseData} from '../models/courseData';
+import {AuthService} from "./auth.service";
 
 @Injectable()
 export class CourseService {
   private apiUrl: string = properties.coursesApiUrl;
 
-  constructor(private http: HttpClient) {
-    this.http = http;
+  constructor(private http: HttpClient, private authService: AuthService) {
   }
 
-  createCourse(course: CourseData, token: any) {
-    const headers = new HttpHeaders({Authorization: 'Bearer ' + token});
-    return this.http.post<any>(this.apiUrl + '/create', course, {headers});
+  createCourse(course: CourseData) {
+    return this.http.post<any>(`${this.apiUrl}/create`, course, {headers: this.authService.getAuthHeaders()});
   }
 
-
-  deleteCourse(id: Number, token: any) {
-    const headers = new HttpHeaders({Authorization: 'Bearer ' + token});
-    return this.http.delete<any>(this.apiUrl + '/' + id, {headers});
+  deleteCourse(id: Number) {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`, {headers: this.authService.getAuthHeaders()});
   }
 
-  getOwnedCourses(login: String, token: any) {
-    const headers = new HttpHeaders({Authorization: 'Bearer ' + token});
-    return this.http.get<any>(this.apiUrl + '/owner/' + login, {headers});
+  getOwnedCourses() {
+    return this.http.get<any>(`${this.apiUrl}/owner/${this.authService.getDecodedToken().sub}`, {headers: this.authService.getAuthHeaders()});
   }
 
-  addCourseTask(id: number, task: any, token: any) {
-    const headers = new HttpHeaders({Authorization: 'Bearer ' + token});
-    return this.http.post<any>(this.apiUrl + '/' + id + '/tasks', task, {headers});
+  addCourseTask(id: number, task: any) {
+    return this.http.post<any>(`${this.apiUrl}/${id}/tasks`, task, {headers: this.authService.getAuthHeaders()});
   }
 
-  addCourseTaskFile(id: number, taskId: number, file: FormData, token: any) {
-    const headers = new HttpHeaders({Authorization: 'Bearer ' + token});
-    return this.http.post<any>(`${this.apiUrl}/${id}/tasks/${taskId}/file`, file, {headers});
+  addCourseTaskFile(id: number, taskId: number, file: FormData) {
+    return this.http.post<any>(`${this.apiUrl}/${id}/tasks/${taskId}/file`, file, {headers: this.authService.getAuthHeaders()});
   }
 
-  getCourseTasks(id: number, token: any) {
-    const headers = new HttpHeaders({Authorization: 'Bearer ' + token});
-    return this.http.get<any>(this.apiUrl + '/' + id + '/tasks', {headers});
+  getCourseTasks(id: number) {
+    return this.http.get<any>(`${this.apiUrl}/${id}/tasks`, {headers: this.authService.getAuthHeaders()});
   }
 
 }

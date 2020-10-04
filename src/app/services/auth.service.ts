@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import { Router } from '@angular/router';
-import { LoginDto} from '../forms/loginDto';
-import { map } from 'rxjs/operators';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import {Router} from '@angular/router';
+import {LoginDto} from '../forms/loginDto';
+import {map} from 'rxjs/operators';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 import * as properties from '../../properties';
 
@@ -14,25 +14,26 @@ import * as properties from '../../properties';
 export class AuthService {
   private apiUrl: string = properties.loginUrl;
 
-  constructor(private http: HttpClient, private router: Router) { }
-
-  public login(dto : LoginDto){
-    return this.http.post<any>(this.apiUrl, dto,)
-    .pipe(map(tokenDto=>{
-      let decodedToken = new JwtHelperService().decodeToken(tokenDto.token);
-      localStorage.setItem('decodedToken', JSON.stringify(decodedToken))
-      localStorage.setItem('token', tokenDto.token)
-    }));
+  constructor(private http: HttpClient, private router: Router) {
   }
 
-  public logout(){
+  public login(dto: LoginDto) {
+    return this.http.post<any>(this.apiUrl, dto,)
+      .pipe(map(tokenDto => {
+        let decodedToken = new JwtHelperService().decodeToken(tokenDto.token);
+        localStorage.setItem('decodedToken', JSON.stringify(decodedToken))
+        localStorage.setItem('token', tokenDto.token)
+      }));
+  }
+
+  public logout() {
     localStorage.removeItem('token')
     localStorage.removeItem('decodedToken')
     this.router.navigate(['/login'])
   }
 
-  isLoggedIn(): boolean{
-    if(localStorage.getItem('token')){
+  isLoggedIn(): boolean {
+    if (localStorage.getItem('token')) {
       return true;
     }
     return false;
@@ -40,7 +41,7 @@ export class AuthService {
 
   isAdmin(): boolean {
 
-    if(this.getDecodedToken().role==='admin'){
+    if (this.getDecodedToken().role === 'admin') {
       return true;
     }
     return false;
@@ -50,7 +51,7 @@ export class AuthService {
     return this.getDecodedToken().role;
   }
 
-  public getToken(){
+  public getToken() {
     return localStorage.getItem('token')
   }
 
@@ -58,17 +59,18 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('decodedToken'))
   }
 
-  public getFirstName(): string{
-    if(this.getDecodedToken()!=null)
-    return this.getDecodedToken().firstName;
+  public getFirstName(): string {
+    if (this.getDecodedToken() != null)
+      return this.getDecodedToken().firstName;
     else return "";
   }
 
-  public getLastName(): string{
-    if(this.getDecodedToken()!=null)
-    return this.getDecodedToken().lastName;
+  public getLastName(): string {
+    if (this.getDecodedToken() != null)
+      return this.getDecodedToken().lastName;
     else return "";
   }
+
   validatePassword() {
     var passwordId = <HTMLInputElement>document.getElementById("passwordId");
     var passwordAgainId = <HTMLInputElement>document.getElementById("passwordAgainId");
@@ -77,5 +79,9 @@ export class AuthService {
     } else {
       passwordAgainId.setCustomValidity('');
     }
+  }
+
+  public getAuthHeaders(): HttpHeaders {
+    return new HttpHeaders({Authorization: 'Bearer ' + this.getToken()});
   }
 }

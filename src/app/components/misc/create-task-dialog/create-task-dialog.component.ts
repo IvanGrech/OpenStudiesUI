@@ -1,7 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {CourseService} from "../../../services/course.service";
 import {CourseDataService} from "../../../services/course.data.service";
-import {AuthService} from "../../../services/auth.service";
 
 
 @Component({
@@ -16,7 +15,7 @@ export class CreateTaskDialogComponent implements OnInit {
 
   private data: any;
 
-  constructor(private courseService: CourseService, private courseDataService: CourseDataService, private authService: AuthService) {
+  constructor(private courseService: CourseService, private courseDataService: CourseDataService) {
   }
 
   ngOnInit() {
@@ -45,14 +44,13 @@ export class CreateTaskDialogComponent implements OnInit {
     });
 
 
-
-    this.courseService.addCourseTask(courseId, this.data, this.authService.getToken()).subscribe(response => {
+    this.courseService.addCourseTask(courseId, this.data).subscribe(response => {
       let taskId = response;
-      if(this.files!== null && this.files[0] !== undefined) {
-        this.files.forEach((currentFile)=> {
+      if (this.files !== null && this.files[0] !== undefined) {
+        this.files.forEach((currentFile) => {
           let formData = new FormData();
           formData.append('file', currentFile.data);
-          this.courseService.addCourseTaskFile(courseId, taskId, formData, this.authService.getToken()).subscribe( fileResponse => {
+          this.courseService.addCourseTaskFile(courseId, taskId, formData).subscribe(fileResponse => {
           });
         })
       }

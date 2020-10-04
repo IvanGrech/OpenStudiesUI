@@ -17,7 +17,7 @@ export class CoursesListComponent implements OnInit {
   constructor(private courseService: CourseService, private authService: AuthService, private router: Router, private courseDataService: CourseDataService) { }
 
   ngOnInit() {
-    this.courseService.getOwnedCourses(this.authService.getDecodedToken().sub, this.authService.getToken()).subscribe(result => {
+    this.courseService.getOwnedCourses().subscribe(result => {
       this.courses = result;
       this.showSpinner = false;
     });
@@ -27,7 +27,7 @@ export class CoursesListComponent implements OnInit {
     var deleting = window.confirm('Do you want to delete this course?');
     if (deleting) {
       var courseId = event.target.value;
-      this.courseService.deleteCourse(courseId, this.authService.getToken()).subscribe(result => {
+      this.courseService.deleteCourse(courseId).subscribe(result => {
         location.reload();
       });
     }
