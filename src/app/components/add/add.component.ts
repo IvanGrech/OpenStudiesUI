@@ -35,16 +35,16 @@ export class AddComponent implements OnInit {
     if (this.dto.role.name === "admin") {
       this.dto.role.id = 1;
     }
-    this.userService.addUser(this.dto, this.authService.getToken())
+    this.userService.addUser(this.dto)
       .subscribe(
         response => {
-          this.router.navigate(['admin']);  
+          this.router.navigate(['admin']);
         },
         error => {
           this.errors = error.error;
         }
       )
-  
+
   }
 
 
