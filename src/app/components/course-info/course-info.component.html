@@ -9,6 +9,10 @@
     <h1>{{task.tag}}</h1>
     <hr class="my-4">
     <p>{{task.description}}</p>
+    <div class="fileNamesContainer" *ngFor="let file of task.fileNames">
+      <p class="fileLink">{{file}}</p>
+      <mat-icon>file_download</mat-icon>
+    </div>
   </div>
 </div>
 
