@@ -15,8 +15,15 @@
 
 .fileNamesContainer {
   display: flex;
+  align-items: center;
 }
 
 .fileNamesContainer p {
   margin-right: 1rem;
+  margin-bottom: 0;
+
+}
+
+.fileLink {
+  text-decoration: underline;
 }
