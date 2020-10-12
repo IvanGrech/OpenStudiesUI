@@ -31,18 +31,24 @@ export class CourseInfoComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateTaskDialogComponent, {width: '20%'})
   }
 
+  deleteTask(taskId: number) {
+    this.courseService.deleteTask(taskId).subscribe((result) => {
+
+    })
+  }
+
   downloadTaskFile(taskId: number, fileName: string) {
 
-    if(document.getElementById("downloadLink"))
+    if (document.getElementById("downloadLink"))
       document.getElementById("downloadLink").remove();
 
-      var a = document.createElement("a");
-      a.id = "downloadLink";
-      document.body.appendChild(a);
-      a.style.display = "none";
+    var a = document.createElement("a");
+    a.id = "downloadLink";
+    document.body.appendChild(a);
+    a.style.display = "none";
 
     this.courseService.getTaskFile(taskId, fileName).subscribe(response => {
-      var blob = new Blob([response], { type: 'application/octet-stream' }),
+      var blob = new Blob([response], {type: 'application/octet-stream'}),
         url = window.URL.createObjectURL(blob);
       a.href = url;
       a.download = fileName;

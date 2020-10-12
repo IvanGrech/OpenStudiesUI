@@ -5,6 +5,13 @@
   padding: 2rem 10rem;
 }
 
+.taskHeading {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
 .course-tasks{
   background-color: grey;
   border-radius: 20px;

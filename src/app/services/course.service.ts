@@ -44,4 +44,8 @@ export class CourseService {
     });
   }
 
+  deleteTask(taskId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/task/${taskId}/`, {headers: this.authService.getAuthHeaders()});
+  }
+
 }
