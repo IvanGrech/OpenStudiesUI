@@ -1,6 +1,6 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {CourseService} from "../../../services/course.service";
-import {CourseDataService} from "../../../services/course.data.service";
+import {MAT_DIALOG_DATA} from '@angular/material';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class CreateTaskDialogComponent implements OnInit {
 
   private data: any;
 
-  constructor(private courseService: CourseService, private courseDataService: CourseDataService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public injectedData: any, private courseService: CourseService) {
   }
 
   ngOnInit() {
@@ -38,22 +38,17 @@ export class CreateTaskDialogComponent implements OnInit {
   }
 
   addTask() {
-    var courseId = 0;
-    this.courseDataService.currentCourse.subscribe(course => {
-      courseId = course[0].id;
-    });
-
-
-    this.courseService.addCourseTask(courseId, this.data).subscribe(response => {
+    this.courseService.addCourseTask(this.injectedData.courseId, this.data).subscribe(response => {
       let taskId = response;
       if (this.files !== null && this.files[0] !== undefined) {
         this.files.forEach((currentFile) => {
           let formData = new FormData();
           formData.append('file', currentFile.data);
-          this.courseService.addCourseTaskFile(courseId, taskId, formData).subscribe(fileResponse => {
+          this.courseService.addCourseTaskFile(this.injectedData.courseId, taskId, formData).subscribe(fileResponse => {
           });
         })
       }
+      window.location.reload();
     });
   }
 

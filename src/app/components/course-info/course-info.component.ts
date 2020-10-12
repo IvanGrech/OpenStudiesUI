@@ -1,8 +1,8 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
-import {CourseDataService} from "../../services/course.data.service";
+import {Component, OnInit} from '@angular/core';
 import {CourseService} from "../../services/course.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateTaskDialogComponent} from "../misc/create-task-dialog/create-task-dialog.component";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-course-info',
@@ -14,13 +14,14 @@ export class CourseInfoComponent implements OnInit {
   private course: any;
   private tasks: any[];
 
-  constructor(private courseDataService: CourseDataService, private courseService: CourseService, public dialog: MatDialog) {
+  constructor(private courseService: CourseService, public dialog: MatDialog, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.courseDataService.currentCourse.subscribe(currentCourse => {
-      this.course = currentCourse[0];
-    });
+    this.course = {};
+    this.course.tag = this.route.snapshot.paramMap.get('tag');
+    this.course.description = this.route.snapshot.paramMap.get('description');
+    this.course.id = this.route.snapshot.paramMap.get('courseId');
 
     this.courseService.getCourseTasks(this.course.id).subscribe(response => {
       this.tasks = response;
@@ -28,7 +29,9 @@ export class CourseInfoComponent implements OnInit {
   }
 
   addTask() {
-    const dialogRef = this.dialog.open(CreateTaskDialogComponent, {width: '20%'})
+    const dialogRef = this.dialog.open(CreateTaskDialogComponent, {
+      width: '20%', data: {courseId: this.course.id}
+    })
   }
 
   deleteTask(taskId: number) {

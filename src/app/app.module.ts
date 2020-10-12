@@ -27,7 +27,6 @@ import { LoadingSpinnerComponent } from './components/misc/loading-spinner/loadi
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import {CourseDataService} from "./services/course.data.service";
 import { CreateTaskDialogComponent } from './components/misc/create-task-dialog/create-task-dialog.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 
@@ -97,7 +96,7 @@ const appRoutes: Routes = [
     CreateCourseDialogComponent,
     CreateTaskDialogComponent
   ],
-  providers: [CourseService, UserService, AuthService, RoleGuard, CourseDataService],
+  providers: [CourseService, UserService, AuthService, RoleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
