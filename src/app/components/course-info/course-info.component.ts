@@ -35,9 +35,10 @@ export class CourseInfoComponent implements OnInit {
   }
 
   deleteTask(taskId: number) {
-    this.courseService.deleteTask(taskId).subscribe((result) => {
-
-    })
+    if (window.confirm("Are you sure you want to delete this task?"))
+      this.courseService.deleteTask(taskId).subscribe((result) => {
+        window.location.reload();
+      })
   }
 
   downloadTaskFile(taskId: number, fileName: string) {
