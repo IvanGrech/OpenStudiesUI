@@ -1,16 +1,18 @@
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding-top: 3rem;
-}
-.collapse a {
-    color: white;
-}
-h1   {
-    text-align: center;
+#toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-#navbar {
-    background-color: rgb(69, 61, 138);
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+mat-sidenav-container, mat-sidenav-content {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 14rem;
 }
 
