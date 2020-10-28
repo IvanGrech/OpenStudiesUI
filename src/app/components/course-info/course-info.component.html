@@ -6,9 +6,20 @@
 
 <div class="course-tasks" *ngFor="let task of tasks">
   <div>
-    <h1>{{task.tag}}</h1>
+    <div class="taskHeading">
+      <h1>{{task.tag}}</h1>
+      <button mat-mini-fab color="warn" (click)="deleteTask(task.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
     <hr class="my-4">
     <p>{{task.description}}</p>
+    <div class="fileNamesContainer" *ngFor="let file of task.fileNames">
+      <p class="fileLink">{{file}}</p>
+      <button mat-mini-fab color="primary" (click)="downloadTaskFile(task.id, file)">
+        <mat-icon>file_download</mat-icon>
+      </button>
+    </div>
   </div>
 </div>
 

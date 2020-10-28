@@ -1,53 +1,76 @@
-<nav id="navbar" class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand"><img src="../favicon.ico"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+<mat-toolbar id="toolbar">
+
+  <button mat-icon-button color="primary" aria-label="Button with a menu icon" *ngIf="isLoggedIn()"
+          (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul  *ngIf="!isLoggedIn()" class="nav navbar-nav ml-auto w-100 justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/signup">Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/login">Login</a>
-      </li>
-    </ul>
-    <ul *ngIf="isLoggedIn() && isAdmin()" class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="/admin">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/admin/add">Add</a>
-      </li>
 
-    </ul>
-    <ul *ngIf="isLoggedIn() && !isAdmin()" class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/home">Home</a>
-      </li>
-    </ul>
-    <ul *ngIf="isLoggedIn() && !isAdmin()" class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" (click)="showCreateCourseDialog()">Create Course</a>
-      </li>
-    </ul>
-    <ul *ngIf="isLoggedIn() && !isAdmin()" class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/mycourses">View My Courses</a>
-      </li>
-    </ul>
 
-    <ul  *ngIf="isLoggedIn()" class="nav navbar-nav ml-auto w-100 justify-content-end">
-      <span class="navbar-text" style="color: black; text-decoration: underline;">
-        {{fname}}{{" "+lname}}
-      </span>
-      <li class="nav-item">
-        <a class="nav-link" href="/login" (click)="logout()">Logout</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+  <span>OpenStudies</span>
+  <span class="toolbar-spacer"></span>
 
-<router-outlet ></router-outlet>
+  <button mat-icon-button color="primary" [matMenuTriggerFor]="menu" aria-label="Icon-button with a account icon">
+    <mat-icon aria-hidden="false" aria-label="Account icon">account_circle</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <div *ngIf="!isLoggedIn(); else isLoggedInBlock">
+      <button mat-menu-item routerLink="/login">
+        <mat-icon>perm_identity</mat-icon>
+        <span>Sign In</span>
+      </button>
+
+      <button mat-menu-item routerLink="/login" routerLink="/signup">
+        <mat-icon>receipt</mat-icon>
+        <span>Sign Up</span>
+      </button>
+    </div>
+
+    <ng-template #isLoggedInBlock>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Sign Out</span>
+      </button>
+    </ng-template>
+  </mat-menu>
+
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav [mode]="'over'">
+    <div *ngIf="isLoggedIn() && isAdmin()">
+      <button mat-menu-item routerLink="/admin" (click)="sidenav.toggle()">
+        <mat-icon>list</mat-icon>
+        <span>Users</span>
+      </button>
+      <button mat-menu-item routerLink="/admin/add" (click)="sidenav.toggle()">
+        <mat-icon>add</mat-icon>
+        <span>Add User</span>
+      </button>
+    </div>
+
+
+    <div *ngIf="isLoggedIn() && !isAdmin()">
+      <button mat-menu-item routerLink="/home" (click)="sidenav.toggle()">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+
+      <button mat-menu-item routerLink="/mycourses" (click)="sidenav.toggle()">
+        <mat-icon>book</mat-icon>
+        <span>Courses</span>
+      </button>
+
+      <button mat-menu-item routerLink="/mycourses" (click)="sidenav.toggle(); showCreateCourseDialog();">
+        <mat-icon>add</mat-icon>
+        <span>Create Course</span>
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+      <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
 

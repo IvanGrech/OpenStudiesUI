@@ -5,9 +5,32 @@
   padding: 2rem 10rem;
 }
 
+.taskHeading {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
 .course-tasks{
   background-color: grey;
   border-radius: 20px;
   margin: 2rem 10rem;
   padding: 2rem 10rem;
+}
+
+
+.fileNamesContainer {
+  display: flex;
+  align-items: center;
+}
+
+.fileNamesContainer p {
+  margin-right: 1rem;
+  margin-bottom: 0;
+
+}
+
+.fileLink {
+  text-decoration: underline;
 }

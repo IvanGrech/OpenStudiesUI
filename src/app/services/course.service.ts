@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 
 import * as properties from '../../properties';
 import {CourseData} from '../models/courseData';
 import {AuthService} from "./auth.service";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class CourseService {
@@ -34,6 +35,17 @@ export class CourseService {
 
   getCourseTasks(id: number) {
     return this.http.get<any>(`${this.apiUrl}/${id}/tasks`, {headers: this.authService.getAuthHeaders()});
+  }
+
+  getTaskFile(taskId: number, fileName: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/task/${taskId}/file/${fileName}/`, {
+      headers: this.authService.getAuthHeaders(),
+      responseType: 'blob'
+    });
+  }
+
+  deleteTask(taskId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/task/${taskId}/`, {headers: this.authService.getAuthHeaders()});
   }
 
 }
