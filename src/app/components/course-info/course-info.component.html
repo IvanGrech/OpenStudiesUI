@@ -1,8 +1,10 @@
-<div class="course-info">
-  <h1>{{course.tag}}</h1>
-  <hr class="my-4">
-  <p>{{course.description}}</p>
-</div>
+<mat-card>
+
+    <h1 align="center">{{course.tag}}</h1>
+    <hr class="my-1">
+    <p>{{course.description}}</p>
+
+</mat-card>
 
 <div class="course-tasks" *ngFor="let task of tasks">
   <div>
