@@ -16,6 +16,7 @@ import {AuthService} from './services/auth.service';
 import {
   RoleGuardService as RoleGuard
 } from './services/role-guard.service';
+import {JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt';
 import {SignupComponent} from './components/signup/signup.component';
 import {RecaptchaModule, RecaptchaFormsModule} from 'ng-recaptcha';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -101,7 +102,8 @@ const appRoutes: Routes = [
     CreateCourseDialogComponent,
     CreateTaskDialogComponent
   ],
-  providers: [CourseService, UserService, AuthService, RoleGuard],
+  providers: [CourseService, UserService, AuthService, RoleGuard, {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
+    JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

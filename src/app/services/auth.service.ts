@@ -3,33 +3,46 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Router} from '@angular/router';
 import {LoginDto} from '../forms/loginDto';
-import {map} from 'rxjs/operators';
+import {delay, map} from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt';
 
 import * as properties from '../../properties';
+import {Subscription, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private apiUrl: string = properties.loginUrl;
+  tokenSubscription = new Subscription();
+  timeout;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private jwtHelper: JwtHelperService) {
   }
 
   public login(dto: LoginDto) {
     return this.http.post<any>(this.apiUrl, dto,)
       .pipe(map(tokenDto => {
-        let decodedToken = new JwtHelperService().decodeToken(tokenDto.token);
+        let decodedToken = this.jwtHelper.decodeToken(tokenDto.token);
+        this.timeout = this.jwtHelper.getTokenExpirationDate(tokenDto.token).valueOf() - new Date().valueOf();
         localStorage.setItem('decodedToken', JSON.stringify(decodedToken))
         localStorage.setItem('token', tokenDto.token)
+        this.expirationCounter(this.timeout);
       }));
   }
 
   public logout() {
+    this.tokenSubscription.unsubscribe();
     localStorage.removeItem('token')
     localStorage.removeItem('decodedToken')
     this.router.navigate(['/login'])
+  }
+
+  public expirationCounter(timeout) {
+    this.tokenSubscription.unsubscribe();
+    this.tokenSubscription = of(null).pipe(delay(timeout)).subscribe((expired) => {
+      this.logout();
+    });
   }
 
   isLoggedIn(): boolean {
