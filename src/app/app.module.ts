@@ -8,7 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {UserService} from './services/user.service';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AdminHomeComponent} from './components/admin-home/admin-home.component';
 import {AddComponent} from './components/add/add.component';
 import {EditComponent} from './components/edit/edit.component';
@@ -34,6 +34,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCardModule} from "@angular/material/card";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 
 const appRoutes: Routes = [
@@ -96,7 +98,10 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatMenuModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   entryComponents: [
     CreateCourseDialogComponent,

@@ -1,9 +1,13 @@
 <h1 mat-dialog-title>Create course</h1>
 <div mat-dialog-content>
   <p>Course name</p>
-  <input matInput [(ngModel)]="data.tag">
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.tag">
+  </mat-form-field>
   <p>Description</p>
-  <input matInput [(ngModel)]="data.description">
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.description">
+  </mat-form-field>
 </div>
 <div mat-dialog-actions align="center">
   <button mat-button (click)="onCreateClick()" cdkFocusInitial>Create</button>

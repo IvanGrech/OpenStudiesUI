@@ -1,65 +1,27 @@
-<div class="container">
-  <div>
-    <form
-      (ngSubmit)="doLogin()"
-      #userForm="ngForm">
-      <div
-        class="form-group row"
-        id="loginInputDiv">
-        <label
-          for="login"
-          class="col-sm-2 col-form-label">
-          Login:
-        </label>
-        <div class="col-sm-3">
-          <input
-            type="text"
-            id="login"
-            name="login"
-            [(ngModel)]="dto.login"
-            pattern="[a-zA-Z0-9_-]{1,}"
-            required>
-        </div>
-      </div>
+<mat-card>
+  <mat-card-title>Sign In</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="doLogin()">
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Login" formControlName="login">
+        </mat-form-field>
+      </p>
 
-      <div
-        class="form-group row"
-        id="loginInputDiv">
-        <label
-          for="passwordId"
-          class="col-sm-2 col-form-label">
-          Password:
-        </label>
-        <div class="col-sm-3">
-          <input
-            id="password"
-            type="password"
-            name="password"
-            [(ngModel)]="dto.password"
-            pattern="[a-zA-Z0-9_-]{1,}"
-            required>
-        </div>
-      </div>
+      <p>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+      </p>
 
-      <br>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        text-align="center"
-        [hidden]="!error">
-        Login or password is incorrect
-      </div>
+      <p *ngIf="error" class="error">
+        {{ error }}
+      </p>
 
-      <div class="loginButtons">
-        <button class="btn btn-primary btn-lg">
-          <input
-            (click)="doLogin()"
-            type="submit"
-            hidden>
-          Sign in
-        </button>
+      <div class="button">
+        <button type="submit" mat-button>Login</button>
       </div>
 
     </form>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>

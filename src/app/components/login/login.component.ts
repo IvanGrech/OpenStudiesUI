@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
 import {LoginDto} from '../../forms/loginDto'
-import { first } from 'rxjs/operators';
+import {first} from 'rxjs/operators';
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -11,35 +12,41 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
 
-  dto = new LoginDto("", "");
-  error : boolean;
+  @Input() error: string | null;
 
-  constructor(private service: AuthService,  private router: Router) {
 
-   }
+
+
+  form: FormGroup = new FormGroup({
+    login: new FormControl(''),
+    password: new FormControl(''),
+  });
+
+  constructor(private authService: AuthService, private router: Router) {
+
+  }
 
   ngOnInit() {
-    this.error=false;
+
   }
 
-  doLogin(){
-    this.service.login(this.dto)
-    .pipe(first())
-    .subscribe(
-      data => {
-        if(this.service.isAdmin()){
-          this.router.navigate(['/admin']);
-        }else{
-        this.router.navigate(['/home']);
+  doLogin() {
+    let dto = new LoginDto(this.form.get('login').value, this.form.get('password').value);
+    this.authService.login(dto)
+      .pipe(first())
+      .subscribe(
+        data => {
+          if (this.authService.isAdmin()) {
+            this.router.navigate(['/admin']);
+          } else {
+            this.router.navigate(['/home']);
+          }
+        },
+        error => {
+          this.error = 'Username or password is invalid';
         }
-      },
-      error => {
-        this.error=true;
-      }
-    )
+      )
   }
 
-
-  
 
 }
