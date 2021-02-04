@@ -39,6 +39,7 @@ import {MatInputModule} from "@angular/material/input";
 
 
 const appRoutes: Routes = [
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent, data: {title: 'Login'}},
   {path: 'signup', component: SignupComponent, data: {title: 'Signup'}},
   {path: 'home', component: UserPageComponent, canActivate: [RoleGuard], data: {title: 'Home', expectedRole: 'user'}},
