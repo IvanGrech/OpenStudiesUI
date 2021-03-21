@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Create course</h1>
+<div mat-dialog-content>
+  <p>Course Code:</p>
+  <form>
+    <mat-form-field>
+      <input name="courseCode" [(ngModel)]="courseCode"  matInput>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="center">
+  <button mat-button cdkFocusInitial (click)="onSubmit()">Subscribe</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</div>

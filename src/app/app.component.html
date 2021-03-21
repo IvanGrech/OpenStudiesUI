@@ -61,6 +61,11 @@
         <span>Courses</span>
       </button>
 
+      <button mat-menu-item routerLink="/mycourses" (click)="sidenav.toggle(); showSubscribeCourseDialog();">
+        <mat-icon>assignment</mat-icon>
+        <span>Subscribe Course</span>
+      </button>
+
       <button mat-menu-item routerLink="/mycourses" (click)="sidenav.toggle(); showCreateCourseDialog();">
         <mat-icon>add</mat-icon>
         <span>Create Course</span>

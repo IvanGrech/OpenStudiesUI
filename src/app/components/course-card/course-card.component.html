@@ -1,0 +1,16 @@
+<mat-card *ngIf="title; else emptyCard" class="course-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{title}}</mat-card-title>
+    <mat-card-subtitle>{{description}}</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
+<ng-template #emptyCard>
+  <mat-card class="course-card">
+    <mat-card-header>
+      <mat-icon>add</mat-icon>
+      Subscribe To New Course
+    </mat-card-header>
+  </mat-card>
+</ng-template>
+

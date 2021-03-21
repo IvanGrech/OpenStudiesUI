@@ -48,4 +48,8 @@ export class CourseService {
     return this.http.delete(`${this.apiUrl}/task/${taskId}/`, {headers: this.authService.getAuthHeaders()});
   }
 
+  subscribeCourse(courseCode: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/subscribe/${courseCode}`, null, {headers: this.authService.getAuthHeaders()});
+  }
+
 }

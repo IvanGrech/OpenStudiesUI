@@ -36,6 +36,9 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {MatTabsModule} from "@angular/material/tabs";
+import { CourseCardComponent } from './components/course-card/course-card.component';
+import { SubscribeDialogComponent } from './components/misc/subscribe-dialog/subscribe-dialog.component';
 
 
 const appRoutes: Routes = [
@@ -81,7 +84,9 @@ const appRoutes: Routes = [
     CoursesListComponent,
     LoadingSpinnerComponent,
     CourseInfoComponent,
-    CreateTaskDialogComponent
+    CreateTaskDialogComponent,
+    CourseCardComponent,
+    SubscribeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -102,11 +107,13 @@ const appRoutes: Routes = [
     MatCardModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule
   ],
   entryComponents: [
     CreateCourseDialogComponent,
-    CreateTaskDialogComponent
+    CreateTaskDialogComponent,
+    SubscribeDialogComponent
   ],
   providers: [CourseService, UserService, AuthService, RoleGuard, {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
     JwtHelperService],

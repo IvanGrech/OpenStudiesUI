@@ -13,6 +13,8 @@ export class CoursesListComponent implements OnInit {
 
   public courses: any = [];
   showSpinner: boolean = true;
+  public title: string = "Title ***";
+  public description: string = "Description ***";
 
   constructor(private courseService: CourseService, private authService: AuthService, private router: Router) {
   }

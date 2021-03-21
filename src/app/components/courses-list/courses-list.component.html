@@ -1,11 +1,26 @@
-<loading-spinner *ngIf="showSpinner"></loading-spinner>
+<div>
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Subscribed courses">
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">class</mat-icon>
+        Subscribed Courses
+      </ng-template>
+      <course-card [title]="title" [description]="description">
+      </course-card>
+    </mat-tab>
+    <mat-tab label="My Courses">
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">perm_contact_cal</mat-icon>
+        My Courses
+      </ng-template>
+      <div *ngFor="let course of courses" class="course">
+        <h1 class="display-4">{{course.tag}}</h1>
+        <hr class="my-4">
+        <p class="lead">{{course.description}}</p>
+        <button class="btn btn-primary btn-lg" (click)='viewCourse(course)'>View</button>
+        <button class="btn btn-danger btn-lg" [value]="course.id" (click)='deleteCourse($event)'>Delete</button>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 
-<div class="container">
-    <div *ngFor="let course of courses" class="course">
-            <h1 class="display-4">{{course.tag}}</h1>
-            <hr class="my-4">
-            <p class="lead">{{course.description}}</p>
-            <button class="btn btn-primary btn-lg" (click)='viewCourse(course)'>View</button>
-            <button class="btn btn-danger btn-lg" [value]="course.id" (click)='deleteCourse($event)'>Delete</button>
-    </div>
 </div>
