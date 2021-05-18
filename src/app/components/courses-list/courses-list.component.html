@@ -5,7 +5,7 @@
         <mat-icon class="example-tab-icon">class</mat-icon>
         Subscribed Courses
       </ng-template>
-      <course-card [title]="title" [description]="description">
+      <course-card *ngFor="let subscribedCourse of subscribedCourses" [title]="subscribedCourse.tag" [description]="subscribedCourse.description" (click)='viewCourse(subscribedCourse)'>
       </course-card>
     </mat-tab>
     <mat-tab label="My Courses">

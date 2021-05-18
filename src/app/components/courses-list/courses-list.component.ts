@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 export class CoursesListComponent implements OnInit {
 
   public courses: any = [];
+  public subscribedCourses: any = [];
   showSpinner: boolean = true;
   public title: string = "Title ***";
   public description: string = "Description ***";
@@ -24,6 +25,10 @@ export class CoursesListComponent implements OnInit {
       this.courses = result;
       this.showSpinner = false;
     });
+    this.courseService.getSubscribedCourses().subscribe(result => {
+      this.subscribedCourses = result;
+      this.showSpinner = false;
+    })
   }
 
   deleteCourse(event: any) {

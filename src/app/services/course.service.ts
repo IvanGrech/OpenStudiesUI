@@ -25,6 +25,10 @@ export class CourseService {
     return this.http.get<any>(`${this.apiUrl}/owner/${this.authService.getDecodedToken().sub}`, {headers: this.authService.getAuthHeaders()});
   }
 
+  getSubscribedCourses() {
+    return this.http.get<any>(`${this.apiUrl}/subscribed`, {headers: this.authService.getAuthHeaders()});
+  }
+
   addCourseTask(id: number, task: any) {
     return this.http.post<any>(`${this.apiUrl}/${id}/tasks`, task, {headers: this.authService.getAuthHeaders()});
   }
