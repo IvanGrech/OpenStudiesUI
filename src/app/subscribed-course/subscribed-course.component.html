@@ -3,10 +3,6 @@
   <h1 align="center">{{course.tag}}</h1>
   <hr class="my-1">
   <p>{{course.description}}</p>
-  <hr class="my-1">
-  <div id="visibility_div"> Course Code: {{fakeCourseCode}}
-    <mat-icon  id="visibility_icon" (click)="changeCourseCodeVisibility()">{{visibleCourseCode}}</mat-icon>
-  </div>
 
 </mat-card>
 
@@ -14,9 +10,7 @@
   <div>
     <div class="taskHeading">
       <h1>{{task.tag}}</h1>
-      <button mat-mini-fab color="warn" (click)="deleteTask(task.id)">
-        <mat-icon>delete</mat-icon>
-      </button>
+
     </div>
     <hr class="my-4">
     <p>{{task.description}}</p>
@@ -27,10 +21,4 @@
       </button>
     </div>
   </div>
-</div>
-
-<div class="course-tasks">
-  <button mat-fab color="primary">
-    <mat-icon (click)="addTask()">add</mat-icon>
-  </button>
 </div>

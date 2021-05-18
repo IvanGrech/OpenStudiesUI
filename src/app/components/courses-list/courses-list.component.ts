@@ -41,8 +41,10 @@ export class CoursesListComponent implements OnInit {
     }
   }
 
-  viewCourse(course: any) {
-    this.router.navigate(['course', {tag: course.tag, description: course.description, courseId: course.id}])
+  viewCourse(course: any, owner: boolean) {
+    if (owner)
+      this.router.navigate(['course', {tag: course.tag, description: course.description, courseId: course.id, courseCode: course.courseCode}])
+    else this.router.navigate(['subscribed-course', {tag: course.tag, description: course.description, courseId: course.id}])
   }
 
 

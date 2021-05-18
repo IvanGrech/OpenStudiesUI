@@ -13,15 +13,20 @@ export class CourseInfoComponent implements OnInit {
 
   private course: any;
   private tasks: any[];
+  private visibleCourseCode: string;
+  private fakeCourseCode: string;
 
   constructor(private courseService: CourseService, public dialog: MatDialog, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.fakeCourseCode = "*********";
+    this.visibleCourseCode = 'visibility_off';
     this.course = {};
     this.course.tag = this.route.snapshot.paramMap.get('tag');
     this.course.description = this.route.snapshot.paramMap.get('description');
     this.course.id = this.route.snapshot.paramMap.get('courseId');
+    this.course.courseCode = this.route.snapshot.paramMap.get('courseCode');
 
     this.courseService.getCourseTasks(this.course.id).subscribe(response => {
       this.tasks = response;
@@ -59,6 +64,17 @@ export class CourseInfoComponent implements OnInit {
       a.click();
       window.URL.revokeObjectURL(url);
     })
+  }
+
+  changeCourseCodeVisibility() {
+    if(this.visibleCourseCode != 'visibility_off') {
+      this.visibleCourseCode = 'visibility_off';
+      this.fakeCourseCode = "*********";
+    }
+    else {
+      this.visibleCourseCode = 'visibility'
+      this.fakeCourseCode = this.course.courseCode;
+    }
   }
 
 

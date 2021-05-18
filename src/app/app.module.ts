@@ -39,6 +39,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatTabsModule} from "@angular/material/tabs";
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { SubscribeDialogComponent } from './components/misc/subscribe-dialog/subscribe-dialog.component';
+import { SubscribedCourseComponent } from './subscribed-course/subscribed-course.component';
 
 
 const appRoutes: Routes = [
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
   {path: 'home', component: UserPageComponent, canActivate: [RoleGuard], data: {title: 'Home', expectedRole: 'user'}},
   {path: 'mycourses', component: CoursesListComponent, data: {title: 'My Courses'}},
   {path: 'course', component: CourseInfoComponent, data: {title: 'Course'}},
+  {path: 'subscribed-course', component: SubscribedCourseComponent, data: {title: 'Course'}},
   {
     path: 'admin/add', component: AddComponent, canActivate: [RoleGuard],
     data: {
@@ -86,7 +88,8 @@ const appRoutes: Routes = [
     CourseInfoComponent,
     CreateTaskDialogComponent,
     CourseCardComponent,
-    SubscribeDialogComponent
+    SubscribeDialogComponent,
+    SubscribedCourseComponent
   ],
   imports: [
     BrowserModule,

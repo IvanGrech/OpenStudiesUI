@@ -5,7 +5,7 @@
         <mat-icon class="example-tab-icon">class</mat-icon>
         Subscribed Courses
       </ng-template>
-      <course-card *ngFor="let subscribedCourse of subscribedCourses" [title]="subscribedCourse.tag" [description]="subscribedCourse.description" (click)='viewCourse(subscribedCourse)'>
+      <course-card *ngFor="let subscribedCourse of subscribedCourses" [title]="subscribedCourse.tag" [description]="subscribedCourse.description" (click)='viewCourse(subscribedCourse, false)'>
       </course-card>
     </mat-tab>
     <mat-tab label="My Courses">
@@ -17,7 +17,7 @@
         <h1 class="display-4">{{course.tag}}</h1>
         <hr class="my-4">
         <p class="lead">{{course.description}}</p>
-        <button class="btn btn-primary btn-lg" (click)='viewCourse(course)'>View</button>
+        <button class="btn btn-primary btn-lg" (click)='viewCourse(course, true)'>View</button>
         <button class="btn btn-danger btn-lg" [value]="course.id" (click)='deleteCourse($event)'>Delete</button>
       </div>
     </mat-tab>
