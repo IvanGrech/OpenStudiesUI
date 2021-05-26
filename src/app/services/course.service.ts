@@ -52,6 +52,13 @@ export class CourseService {
     });
   }
 
+  getTaskFileForSubscribedUser(taskId: number, fileName: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/task/${taskId}/file/${fileName}/subscribed`, {
+      headers: this.authService.getAuthHeaders(),
+      responseType: 'blob'
+    });
+  }
+
   deleteTask(taskId: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/task/${taskId}/`, {headers: this.authService.getAuthHeaders()});
   }

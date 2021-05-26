@@ -55,4 +55,24 @@ export class SubscribedCourseComponent implements OnInit {
     })
   }
 
+  downloadTaskAnswerFile(taskId: number, fileName: string) {
+
+    if (document.getElementById("downloadLink"))
+      document.getElementById("downloadLink").remove();
+
+    var a = document.createElement("a");
+    a.id = "downloadLink";
+    document.body.appendChild(a);
+    a.style.display = "none";
+
+    this.courseService.getTaskFileForSubscribedUser(taskId, fileName).subscribe(response => {
+      var blob = new Blob([response], {type: 'application/octet-stream'}),
+        url = window.URL.createObjectURL(blob);
+      a.href = url;
+      a.download = fileName;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    })
+  }
+
 }
