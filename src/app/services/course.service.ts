@@ -37,6 +37,10 @@ export class CourseService {
     return this.http.post<any>(`${this.apiUrl}/${id}/tasks/${taskId}/file`, file, {headers: this.authService.getAuthHeaders()});
   }
 
+  addTaskAnswerFile(taskId: number, file: FormData) {
+    return this.http.post<any>(`${this.apiUrl}/saveAnswerFiles/tasks/${taskId}/file`, file, {headers: this.authService.getAuthHeaders()});
+  }
+
   getCourseTasks(id: number) {
     return this.http.get<any>(`${this.apiUrl}/${id}/tasks`, {headers: this.authService.getAuthHeaders()});
   }

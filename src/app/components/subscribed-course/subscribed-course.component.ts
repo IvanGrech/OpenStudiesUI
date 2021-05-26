@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CourseService} from "../../services/course.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ActivatedRoute} from "@angular/router";
+import {AddTaskAnswerDialogComponent} from "../misc/add-task-answer-dialog/add-task-answer-dialog.component";
 
 @Component({
   selector: 'app-subscribed-course',
@@ -25,6 +26,13 @@ export class SubscribedCourseComponent implements OnInit {
     this.courseService.getCourseTasks(this.course.id).subscribe(response => {
       this.tasks = response;
     });
+  }
+
+  addTaskAnswer(taskId: number) {
+    console.log(this.course.id)
+    const dialogRef = this.dialog.open(AddTaskAnswerDialogComponent, {
+      width: '20%', data: {courseId: this.course.id, taskId: taskId}
+    })
   }
 
   downloadTaskFile(taskId: number, fileName: string) {

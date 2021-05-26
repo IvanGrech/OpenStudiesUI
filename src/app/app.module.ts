@@ -40,6 +40,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { SubscribeDialogComponent } from './components/misc/subscribe-dialog/subscribe-dialog.component';
 import { SubscribedCourseComponent } from './components/subscribed-course/subscribed-course.component';
+import { AddTaskAnswerDialogComponent } from './components/misc/add-task-answer-dialog/add-task-answer-dialog.component';
 
 
 const appRoutes: Routes = [
@@ -89,7 +90,8 @@ const appRoutes: Routes = [
     CreateTaskDialogComponent,
     CourseCardComponent,
     SubscribeDialogComponent,
-    SubscribedCourseComponent
+    SubscribedCourseComponent,
+    AddTaskAnswerDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +118,8 @@ const appRoutes: Routes = [
   entryComponents: [
     CreateCourseDialogComponent,
     CreateTaskDialogComponent,
-    SubscribeDialogComponent
+    SubscribeDialogComponent,
+    AddTaskAnswerDialogComponent
   ],
   providers: [CourseService, UserService, AuthService, RoleGuard, {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
     JwtHelperService],

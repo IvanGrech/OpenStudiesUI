@@ -1,13 +1,11 @@
 .taskHeading {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
 }
 
 .course-tasks{
-  border-radius: 20px;
-  border-block: 2px groove black;
-
-  margin: 2rem 10rem;
+  border-block: 3px solid black;
+  margin: 4rem 10rem;
   padding: 2rem 10rem;
 }
 

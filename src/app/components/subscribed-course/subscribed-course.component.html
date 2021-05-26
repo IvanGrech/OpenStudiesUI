@@ -10,7 +10,19 @@
   <div>
     <div class="taskHeading">
       <h1>{{task.tag}}</h1>
-
+      <button id ="menuButton" mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="addTaskAnswer(task.id)">
+          <mat-icon>upgrade</mat-icon>
+          <span>Upload Answer</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>comment</mat-icon>
+          <span>Comment</span>
+        </button>
+      </mat-menu>
     </div>
     <hr class="my-4">
     <p>{{task.description}}</p>
