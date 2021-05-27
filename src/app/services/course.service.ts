@@ -67,4 +67,8 @@ export class CourseService {
     return this.http.put(`${this.apiUrl}/subscribe/${courseCode}`, null, {headers: this.authService.getAuthHeaders()});
   }
 
+  getUsersWorksForTask(courseId: number, taskId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${courseId}/task/${taskId}/works`, {headers: this.authService.getAuthHeaders()});
+  }
+
 }

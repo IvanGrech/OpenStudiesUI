@@ -40,7 +40,6 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="fileNamesContainer" *ngFor="let file of task.userFileNames">
-        <h5>Your Files:</h5>
         <p class="fileLink">{{file}}</p>
         <button mat-mini-fab color="primary" (click)="downloadTaskAnswerFile(task.id, file)">
           <mat-icon>file_download</mat-icon>

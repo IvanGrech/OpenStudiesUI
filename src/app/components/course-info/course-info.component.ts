@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CourseService} from "../../services/course.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateTaskDialogComponent} from "../misc/create-task-dialog/create-task-dialog.component";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-course-info',
@@ -16,7 +16,7 @@ export class CourseInfoComponent implements OnInit {
   private visibleCourseCode: string;
   private fakeCourseCode: string;
 
-  constructor(private courseService: CourseService, public dialog: MatDialog, private route: ActivatedRoute) {
+  constructor(private courseService: CourseService, public dialog: MatDialog, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -75,6 +75,10 @@ export class CourseInfoComponent implements OnInit {
       this.visibleCourseCode = 'visibility'
       this.fakeCourseCode = this.course.courseCode;
     }
+  }
+
+  openUsersWorks(courseId: number, taskId: number) {
+    this.router.navigate(['task/works', {courseId: courseId, taskId: taskId}]);
   }
 
 

@@ -14,9 +14,24 @@
   <div>
     <div class="taskHeading">
       <h1>{{task.tag}}</h1>
-      <button mat-mini-fab color="warn" (click)="deleteTask(task.id)">
-        <mat-icon>delete</mat-icon>
+      <button id ="menuButton" mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
       </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="openUsersWorks(course.id, task.id)">
+          <mat-icon>fact_check</mat-icon>
+          <span>Look Through Works</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>comment</mat-icon>
+          <span>Comment</span>
+        </button>
+        <button mat-menu-item color="warn" (click)="deleteTask(task.id)">
+          <mat-icon>delete</mat-icon>
+          <span>Delete Task</span>
+        </button>
+      </mat-menu>
+
     </div>
     <hr class="my-4">
     <p>{{task.description}}</p>

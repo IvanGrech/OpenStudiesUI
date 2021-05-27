@@ -42,6 +42,7 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
 import { SubscribeDialogComponent } from './components/misc/subscribe-dialog/subscribe-dialog.component';
 import { SubscribedCourseComponent } from './components/subscribed-course/subscribed-course.component';
 import { AddTaskAnswerDialogComponent } from './components/misc/add-task-answer-dialog/add-task-answer-dialog.component';
+import { UsersTasksComponent } from './components/users-tasks/users-tasks.component';
 
 
 const appRoutes: Routes = [
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
   {path: 'mycourses', component: CoursesListComponent, data: {title: 'My Courses'}},
   {path: 'course', component: CourseInfoComponent, data: {title: 'Course'}},
   {path: 'subscribed-course', component: SubscribedCourseComponent, data: {title: 'Course'}},
+  {path: 'task/works', component: UsersTasksComponent, data: {title: 'User Tasks'}},
   {
     path: 'admin/add', component: AddComponent, canActivate: [RoleGuard],
     data: {
@@ -92,7 +94,8 @@ const appRoutes: Routes = [
     CourseCardComponent,
     SubscribeDialogComponent,
     SubscribedCourseComponent,
-    AddTaskAnswerDialogComponent
+    AddTaskAnswerDialogComponent,
+    UsersTasksComponent
   ],
   imports: [
     BrowserModule,
