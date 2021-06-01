@@ -38,6 +38,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatTabsModule} from "@angular/material/tabs";
 import { MatExpansionModule} from "@angular/material/expansion";
+import { MatTableModule} from "@angular/material/table";
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { SubscribeDialogComponent } from './components/misc/subscribe-dialog/subscribe-dialog.component';
 import { SubscribedCourseComponent } from './components/subscribed-course/subscribed-course.component';
@@ -118,7 +119,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatInputModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule
   ],
   entryComponents: [
     CreateCourseDialogComponent,
