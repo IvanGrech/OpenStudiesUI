@@ -78,4 +78,8 @@ export class CourseService {
     return this.http.get(`${this.apiUrl}/${courseId}/task/${taskId}/works`, {headers: this.authService.getAuthHeaders()});
   }
 
+  saveGradeForUser(taskId: number, userId: number, grade: number): Observable<any> {
+    return this.http.put(`${this.apiUrl}/task/${taskId}/user/${userId}/grade`, {grade}, {headers: this.authService.getAuthHeaders()});
+  }
+
 }

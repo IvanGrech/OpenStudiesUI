@@ -5,3 +5,22 @@ table {
 th.mat-sort-header-sorted {
   color: black;
 }
+
+.grade-form {
+  min-width: 50px;
+  max-width: 70px;
+  width: 100%;
+  display: flex;
+}
+
+.full-width {
+  width: 100%;
+}
+
+#submit-button{
+  margin-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 10px;
+  padding-right: 10px;
+}

@@ -40,6 +40,7 @@ export class UsersTasksComponent implements OnInit {
         user.lastName = userAndTasks.user.lastName;
         user.fileNames = userAndTasks.fileNames;
         user.id = userAndTasks.user.id;
+        user.grade = userAndTasks.grade;
         this.users.push(user);
       })
       this.tableDataSource = new MatTableDataSource(this.users);
@@ -63,6 +64,13 @@ export class UsersTasksComponent implements OnInit {
       a.click();
       window.URL.revokeObjectURL(url);
     })
+  }
+
+  submitGrade(userId: number, grade: string) {
+    this.courseService.saveGradeForUser(this.taskId, userId, Number(grade)).subscribe(response => {
+
+    });
+
   }
 
 
