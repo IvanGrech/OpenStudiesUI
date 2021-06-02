@@ -37,6 +37,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatBadgeModule} from "@angular/material/badge";
 import { MatExpansionModule} from "@angular/material/expansion";
 import { MatTableModule} from "@angular/material/table";
 import { CourseCardComponent } from './components/course-card/course-card.component';
@@ -120,7 +121,8 @@ const appRoutes: Routes = [
     MatInputModule,
     MatTabsModule,
     MatExpansionModule,
-    MatTableModule
+    MatTableModule,
+    MatBadgeModule
   ],
   entryComponents: [
     CreateCourseDialogComponent,

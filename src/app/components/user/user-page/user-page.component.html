@@ -1,3 +1,18 @@
-<div class="container">
-    <p>User page here*</p>
+<div *ngFor="let currentDatasource of tablesDataSource; let indexI=index;">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{courseGrades[indexI].courseName}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="currentDatasource" class="mat-elevation-z8">
+        <ng-container matColumnDef="{{task}}" *ngFor="let task of courseGrades[indexI].taskNameList; let indexJ = index;">
+          <th mat-header-cell *matHeaderCellDef> {{task}} </th>
+          <td mat-cell *matCellDef="let element"> {{courseGrades[indexI].gradeList[indexJ]}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns[indexI]"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns[indexI];"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
 </div>
