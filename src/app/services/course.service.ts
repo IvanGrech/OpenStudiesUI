@@ -86,4 +86,8 @@ export class CourseService {
     return this.http.get(`${this.apiUrl}/user/grades`, {headers: this.authService.getAuthHeaders()});
   }
 
+  getCourseGradesForCurrentUser(courseId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${courseId}/grades`, {headers: this.authService.getAuthHeaders()});
+  }
+
 }

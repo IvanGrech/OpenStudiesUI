@@ -13,6 +13,7 @@ export class SubscribedCourseComponent implements OnInit {
 
   private course: any;
   private tasks: any[];
+  private courseGrades: any;
 
   constructor(private courseService: CourseService, public dialog: MatDialog, private route: ActivatedRoute) {
   }
@@ -25,6 +26,10 @@ export class SubscribedCourseComponent implements OnInit {
 
     this.courseService.getCourseTasks(this.course.id).subscribe(response => {
       this.tasks = response;
+    });
+
+    this.courseService.getCourseGradesForCurrentUser(this.course.id).subscribe(response => {
+      this.courseGrades = response;
     });
   }
 
