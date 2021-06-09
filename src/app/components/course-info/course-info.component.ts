@@ -42,7 +42,9 @@ export class CourseInfoComponent implements OnInit {
   deleteTask(taskId: number) {
     if (window.confirm("Are you sure you want to delete this task?"))
       this.courseService.deleteTask(taskId).subscribe((result) => {
-        window.location.reload();
+        this.tasks = this.tasks.filter(function(value, index, arr) {
+          return taskId != value.id;
+        })
       })
   }
 

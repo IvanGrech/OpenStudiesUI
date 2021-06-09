@@ -22,7 +22,7 @@ export class SubscribeDialogComponent implements OnInit {
   onSubmit() {
     this.courseService.subscribeCourse(this.courseCode).subscribe((response) => {
       if (this.router.url === '/mycourses') {
-        location.reload();
+        this.router.navigate(['/home'])
       }
     });
   }

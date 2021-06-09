@@ -21,7 +21,7 @@ export class CreateCourseDialogComponent {
     this.courseService.createCourse(this.data).subscribe(
       response => {
         if (this.router.url === '/mycourses') {
-          location.reload();
+          this.router.navigate(['/home']);
         }
       },
       error => {

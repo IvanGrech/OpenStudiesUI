@@ -1,6 +1,8 @@
 import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {CourseService} from "../../../services/course.service";
 import {MAT_DIALOG_DATA} from '@angular/material';
+import {Router} from "@angular/router";
+import {MatDialogRef} from "@angular/material/dialog";
 
 
 @Component({
@@ -15,7 +17,7 @@ export class CreateTaskDialogComponent implements OnInit {
 
   private data: any;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public injectedData: any, private courseService: CourseService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public injectedData: any, private courseService: CourseService, private router: Router, public dialogRef: MatDialogRef<CreateTaskDialogComponent>) {
   }
 
   ngOnInit() {
@@ -48,7 +50,8 @@ export class CreateTaskDialogComponent implements OnInit {
           });
         })
       }
-      window.location.reload();
+      this.dialogRef.close();
+      this.router.navigate(['/home'])
     });
   }
 

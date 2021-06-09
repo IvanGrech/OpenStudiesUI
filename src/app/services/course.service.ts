@@ -13,6 +13,10 @@ export class CourseService {
   constructor(private http: HttpClient, private authService: AuthService) {
   }
 
+  getCourseById(courseId: number) {
+    return this.http.get<any>(`${this.apiUrl}/${courseId}`, {headers: this.authService.getAuthHeaders()});
+  }
+
   createCourse(course: CourseData) {
     return this.http.post<any>(`${this.apiUrl}`, course, {headers: this.authService.getAuthHeaders()});
   }

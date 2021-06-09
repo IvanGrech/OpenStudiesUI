@@ -1,6 +1,8 @@
 import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {CourseService} from "../../../services/course.service";
 import {MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialogRef} from "@angular/material/dialog";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-task-answer-dialog',
@@ -14,7 +16,7 @@ export class AddTaskAnswerDialogComponent implements OnInit {
 
   private data: any;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public injectedData: any, private courseService: CourseService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public injectedData: any, private courseService: CourseService, public dialogRef: MatDialogRef<AddTaskAnswerDialogComponent>, public router: Router) {
   }
 
   ngOnInit() {
@@ -36,17 +38,20 @@ export class AddTaskAnswerDialogComponent implements OnInit {
   }
 
   uploadTaskAnswer() {
-      let taskId = this.injectedData.taskId;
-      console.log(taskId);
-      if (this.files !== null && this.files[0] !== undefined) {
-        this.files.forEach((currentFile) => {
-          let formData = new FormData();
-          formData.append('file', currentFile.data);
-          this.courseService.addTaskAnswerFile(taskId, formData).subscribe(fileResponse => {
-          });
-        })
-      }
-      window.location.reload();
+    let taskId = this.injectedData.taskId;
+    console.log(taskId);
+    if (this.files !== null && this.files[0] !== undefined) {
+      this.files.forEach((currentFile) => {
+        let formData = new FormData();
+        formData.append('file', currentFile.data);
+        this.courseService.addTaskAnswerFile(taskId, formData).subscribe(fileResponse => {
+        });
+      })
+    }
+    this.dialogRef.close();
+    this.router.navigate(['/home']);
+    //this.closeDialog();
+    //window.location.reload();
 
   }
 

@@ -36,7 +36,9 @@ export class CoursesListComponent implements OnInit {
     if (deleting) {
       var courseId = event.target.value;
       this.courseService.deleteCourse(courseId).subscribe(result => {
-        location.reload();
+        this.courses = this.courses.filter(function(value, index, arr) {
+          return courseId != value.id;
+        })
       });
     }
   }
