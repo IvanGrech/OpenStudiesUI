@@ -1,12 +1,23 @@
+@import '~@angular/material/theming';
+@import "src/styles";
+
+
 .course-card {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-  margin-left: 35rem;
-  padding: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  margin: 0 auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+
+  padding: 0.5rem;
   width: 50%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .course-card:hover {
   cursor: pointer;
+}
+
+#openIcon {
+
 }

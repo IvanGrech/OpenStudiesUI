@@ -1,8 +1,7 @@
 <mat-card>
 
   <h1 align="center">{{course.tag}}</h1>
-  <hr class="my-1">
-  <p>{{course.description}}</p>
+
   <hr class="my-1">
   <div id="visibility_div"> Course Code: {{fakeCourseCode}}
     <mat-icon  id="visibility_icon" (click)="changeCourseCodeVisibility()">{{visibleCourseCode}}</mat-icon>
@@ -34,7 +33,6 @@
 
     </div>
     <hr class="my-4">
-    <p>{{task.description}}</p>
     <div class="fileNamesContainer" *ngFor="let file of task.fileNames">
       <p class="fileLink">{{file}}</p>
       <button mat-mini-fab color="primary" (click)="downloadTaskFile(task.id, file)">
