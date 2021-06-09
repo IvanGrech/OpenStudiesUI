@@ -1,80 +1,77 @@
 <header style="font-size: xx-large; text-align: center;">Sign up</header>
-<form (ngSubmit)="doSignUp()" #userForm="ngForm">
+<div id="sign-up-div">
+  <form (ngSubmit)="doSignUp()" #userForm="ngForm">
     <div class="form-group row">
-        <label for="loginId" class="col-sm-2 col-form-label">Login</label>
-        <div class="col-sm-3">
-            <input class="form-control" id="loginId" name="login"  [(ngModel)]="dto.login" pattern="[A-Za-z0-9_]{4,16}" required />
-            <p id="loginError" style="display:run-in;">Login must be 4-16 characters long. No Spaces</p>
-            <p class="errorMessage">{{errors.login}}</p>
-        </div>
+      <label for="loginId" class="col-sm-2 col-form-label">Login</label>
+      <div class="col-sm-3">
+        <input class="form-control" id="loginId" name="login" [(ngModel)]="dto.login" pattern="[A-Za-z0-9_]{4,16}"
+               required/>
+        <p id="loginError" style="display:run-in;">Login must be 4-16 characters long. No Spaces</p>
+        <p class="errorMessage">{{errors.login}}</p>
+      </div>
     </div>
     <div class="form-group row">
-        <label for="passwordId" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-3">
-            <input type="password" class="form-control" id="passwordId" name="password" [(ngModel)]="dto.password" (change)="validatePassword()"
-                pattern="[A-Za-z0-9]{4,16}" required />
-                <p class="errorMessage">{{errors.password}}</p>
-        </div>
+      <label for="passwordId" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-3">
+        <input type="password" class="form-control" id="passwordId" name="password" [(ngModel)]="dto.password"
+               (change)="validatePassword()"
+               pattern="[A-Za-z0-9]{4,16}" required/>
+        <p class="errorMessage">{{errors.password}}</p>
+      </div>
     </div>
     <div class="form-group row">
-        <label for="passwordAgainId" class="col-sm-2 col-form-label">Password again</label>
-        <div class="col-sm-3">
-            <input type="password" class="form-control" id="passwordAgainId" name="repeatPassword" [(ngModel)]="dto.repeatPassword" (keyup)="validatePassword()"
-                pattern="[A-Za-z0-9]{4,16}" required/>
-            <p id="repeatPasswordError" style="display:run-in;">Passwords must match</p>
-            <p class="errorMessage">{{errors.repeatPassword}}</p>
-        </div>
+      <label for="passwordAgainId" class="col-sm-2 col-form-label">Repeat Password</label>
+      <div class="col-sm-3">
+        <input type="password" class="form-control" id="passwordAgainId" name="repeatPassword"
+               [(ngModel)]="dto.repeatPassword" (keyup)="validatePassword()"
+               pattern="[A-Za-z0-9]{4,16}" required/>
+        <p id="repeatPasswordError" style="display:run-in;">Passwords must match</p>
+        <p class="errorMessage">{{errors.repeatPassword}}</p>
+      </div>
     </div>
     <div class="form-group row">
-        <label for="emailId" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-3">
-            <input type="email" class="form-control" id="emailId" name="email"  [(ngModel)]="dto.email" 
-                pattern="[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+"  required/>
-                <span></span>
-                <p class="errorMessage">{{errors.email}}</p>
-        </div>
+      <label for="emailId" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-3">
+        <input type="email" class="form-control" id="emailId" name="email" [(ngModel)]="dto.email"
+               pattern="[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+" required/>
+        <span></span>
+        <p class="errorMessage">{{errors.email}}</p>
+      </div>
     </div>
     <div class="form-group row">
-        <label for="firstNameId" class="col-sm-2 col-form-label">First Name</label>
-        <div class="col-sm-3">
-            <input type="text" class="form-control" id="firstNameId" name="firstName" pattern="[A-Za-z]{2,32}" [(ngModel)]="dto.firstName"  required/>
-            <span></span>
-              <p class="errorMessage">{{errors.firstName}}</p>
-        </div>
+      <label for="firstNameId" class="col-sm-2 col-form-label">First Name</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="firstNameId" name="firstName" pattern="[A-Za-z]{2,32}"
+               [(ngModel)]="dto.firstName" required/>
+        <span></span>
+        <p class="errorMessage">{{errors.firstName}}</p>
+      </div>
     </div>
 
     <div class="form-group row">
-        <label for="lastNameId" class="col-sm-2 col-form-label">Last Name</label>
-        <div class="col-sm-3">
-            <input type="text" class="form-control" id="lastNameId" name="lastName" pattern="[A-Za-z]{2,32}" [(ngModel)]="dto.lastName"
-                 required/>
-                 <span></span>
-                 <p class="errorMessage">{{errors.lastName}}</p>
-        </div>
+      <label for="lastNameId" class="col-sm-2 col-form-label">Last Name</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="lastNameId" name="lastName" pattern="[A-Za-z]{2,32}"
+               [(ngModel)]="dto.lastName"
+               required/>
+        <span></span>
+        <p class="errorMessage">{{errors.lastName}}</p>
+      </div>
     </div>
 
 
+    <input type="hidden" value="user" name="role"/>
+
+
+    <re-captcha [(ngModel)]="dto.captcha" name="captcha"
+                siteKey="6LdXFNEUAAAAACErxZVXDeHjM7tCTnBjERZCtq1X"></re-captcha>
     <div class="form-group row">
-        <label for="birthdayId" class="col-sm-2 col-form-label">Birthday</label>
-        <div class="col-sm-3">
-            <input type="date" class="form-control" id="birthdayId" name="birthday" min="1950-01-01" [(ngModel)]="dto.birthday"
-                max="2010-01-01" path="birthday" required/>
-        </div>
+      <div class="col-sm-2">
+        <button type="submit" class="btn btn-primary">Ok</button>
+
+        <a routerLink="/login">Sign in</a>
+
+      </div>
     </div>
-
-    <input type="hidden" value="user" name="role" />
-
-
-    <re-captcha [(ngModel)]="dto.captcha" name="captcha" siteKey="6LdXFNEUAAAAACErxZVXDeHjM7tCTnBjERZCtq1X" ></re-captcha>
-    <div class="form-group row">
-        <div class="col-sm-2">
-            <button type="submit" class="btn btn-primary">Ok</button>
-
-            <a routerLink="/login">Sign in</a>
-
-        </div>
-    </div>
-</form>
-
-
-
+  </form>
+</div>
