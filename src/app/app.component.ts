@@ -4,6 +4,7 @@ import { AuthService } from './services/auth.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CreateCourseDialogComponent } from './components/misc/create-course-dialog/create-course-dialog.component';
 import {SubscribeDialogComponent} from "./components/misc/subscribe-dialog/subscribe-dialog.component";
+import * as properties from '../properties';
 
 @Component({
   selector: 'app-root',
@@ -51,6 +52,10 @@ export class AppComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
       //add message about the result here (maybe a new dialog)
     });
+  }
+
+  openTimeTableTab() {
+    window.open(properties.timeTableUrl);
   }
 
   logout(){
