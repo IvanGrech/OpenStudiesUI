@@ -2,11 +2,17 @@
 <div mat-dialog-content>
   <p>Course name</p>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.tag">
-  </mat-form-field>
-  <p>Description</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.description">
+    <input matInput [(ngModel)]="data.tag" [formControl]="createCourseFormControl">
+
+    <mat-error *ngIf="createCourseFormControl.hasError('min')  && !createCourseFormControl.hasError('required')">
+      Minimun length is {{minLength}}
+    </mat-error>
+    <mat-error *ngIf="createCourseFormControl.hasError('max') && !createCourseFormControl.hasError('required')">
+      Maximum length is {{maxLength}}
+    </mat-error>
+    <mat-error *ngIf="createCourseFormControl.hasError('required')">
+      Course name <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 </div>
 <div mat-dialog-actions align="center">
