@@ -1,5 +1,4 @@
 <mat-card>
-
   <h1 id="courseHeading"align="center">{{course.tag}}
     <button id="course-options-button" mat-fab color="primary" [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
@@ -15,7 +14,6 @@
       </button>
     </mat-menu>
   </h1>
-
 </mat-card>
 
 <div class="course-tasks" *ngFor="let task of tasks">
@@ -44,9 +42,19 @@
     <hr class="my-4">
     <div class="fileNamesContainer" *ngFor="let file of task.fileNames">
       <p class="fileLink">{{file}}</p>
-      <button mat-mini-fab color="primary" (click)="downloadTaskFile(task.id, file)">
-        <mat-icon>file_download</mat-icon>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
       </button>
+      <mat-menu #menu="matMenu" yPosition="above">
+        <button mat-menu-item color="primary" (click)="downloadTaskFile(task.id, file)">
+          <mat-icon>file_download</mat-icon>
+          <span>Download</span>
+        </button>
+        <button mat-menu-item color="danger" (click)="deleteTaskFile(task.id, file)">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-menu>
     </div>
   </div>
 </div>

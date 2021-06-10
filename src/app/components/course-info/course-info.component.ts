@@ -43,7 +43,7 @@ export class CourseInfoComponent implements OnInit {
   deleteTask(taskId: number) {
     if (window.confirm("Are you sure you want to delete this task?"))
       this.courseService.deleteTask(taskId).subscribe((result) => {
-        this.tasks = this.tasks.filter(function(value, index, arr) {
+        this.tasks = this.tasks.filter(function (value, index, arr) {
           return taskId != value.id;
         })
       })
@@ -83,7 +83,7 @@ export class CourseInfoComponent implements OnInit {
     }
   }
 
-  showCourseCodeDialog(){
+  showCourseCodeDialog() {
     const dialogRef = this.dialog.open(CourseCodeDialogComponent, {
       width: '20%',
       data: {
@@ -92,5 +92,12 @@ export class CourseInfoComponent implements OnInit {
     });
   }
 
+  deleteTaskFile(taskId: number, fileName: string) {
+    if (window.confirm("Are you sure you want to delete this file?")) {
+      this.courseService.deleteTaskFile(taskId, fileName).subscribe((response) => {
+
+      });
+    }
+  }
 
 }

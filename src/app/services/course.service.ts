@@ -94,4 +94,8 @@ export class CourseService {
     return this.http.get(`${this.apiUrl}/${courseId}/grades`, {headers: this.authService.getAuthHeaders()});
   }
 
+  deleteTaskFile(taskId: number, fileName: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/task/${taskId}/file/${fileName}/`, {headers: this.authService.getAuthHeaders()});
+  }
+
 }
