@@ -52,8 +52,8 @@
 
     <div *ngIf="isLoggedIn() && !isAdmin()">
       <button mat-menu-item routerLink="/home" (click)="sidenav.toggle()">
-        <mat-icon>home</mat-icon>
-        <span>Home</span>
+        <mat-icon>grading</mat-icon>
+        <span>Grade List</span>
       </button>
 
       <button mat-menu-item routerLink="/mycourses" (click)="sidenav.toggle()">
