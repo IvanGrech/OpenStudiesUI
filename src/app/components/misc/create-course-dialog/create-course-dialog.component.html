@@ -4,10 +4,10 @@
   <mat-form-field>
     <input matInput [(ngModel)]="data.tag" [formControl]="createCourseFormControl">
 
-    <mat-error *ngIf="createCourseFormControl.hasError('min')  && !createCourseFormControl.hasError('required')">
+    <mat-error *ngIf="createCourseFormControl.hasError('minLength')  && !createCourseFormControl.hasError('required')">
       Minimun length is {{minLength}}
     </mat-error>
-    <mat-error *ngIf="createCourseFormControl.hasError('max') && !createCourseFormControl.hasError('required')">
+    <mat-error *ngIf="createCourseFormControl.hasError('maxLength') && !createCourseFormControl.hasError('required')">
       Maximum length is {{maxLength}}
     </mat-error>
     <mat-error *ngIf="createCourseFormControl.hasError('required')">
