@@ -1,3 +1,6 @@
+<div id="headingBlock"*ngIf="tablesDataSource.length === 0">
+  <h1>No Subscribed Courses</h1>
+</div>
 <div *ngFor="let currentDatasource of tablesDataSource; let indexI=index;">
   <mat-card class="example-card">
     <mat-card-header>
