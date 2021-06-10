@@ -45,6 +45,7 @@ import { SubscribeDialogComponent } from './components/misc/subscribe-dialog/sub
 import { SubscribedCourseComponent } from './components/subscribed-course/subscribed-course.component';
 import { AddTaskAnswerDialogComponent } from './components/misc/add-task-answer-dialog/add-task-answer-dialog.component';
 import { UsersTasksComponent } from './components/users-tasks/users-tasks.component';
+import { CourseCodeDialogComponent } from './components/misc/course-code-dialog/course-code-dialog.component';
 
 
 const appRoutes: Routes = [
@@ -97,7 +98,8 @@ const appRoutes: Routes = [
     SubscribeDialogComponent,
     SubscribedCourseComponent,
     AddTaskAnswerDialogComponent,
-    UsersTasksComponent
+    UsersTasksComponent,
+    CourseCodeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -128,7 +130,8 @@ const appRoutes: Routes = [
     CreateCourseDialogComponent,
     CreateTaskDialogComponent,
     SubscribeDialogComponent,
-    AddTaskAnswerDialogComponent
+    AddTaskAnswerDialogComponent,
+    CourseCodeDialogComponent
   ],
   providers: [CourseService, UserService, AuthService, RoleGuard, {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
     JwtHelperService],

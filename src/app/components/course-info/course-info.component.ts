@@ -3,6 +3,7 @@ import {CourseService} from "../../services/course.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateTaskDialogComponent} from "../misc/create-task-dialog/create-task-dialog.component";
 import {ActivatedRoute, Router} from "@angular/router";
+import {CourseCodeDialogComponent} from "../misc/course-code-dialog/course-code-dialog.component";
 
 @Component({
   selector: 'app-course-info',
@@ -68,19 +69,27 @@ export class CourseInfoComponent implements OnInit {
     })
   }
 
-  changeCourseCodeVisibility() {
-    if(this.visibleCourseCode != 'visibility_off') {
-      this.visibleCourseCode = 'visibility_off';
-      this.fakeCourseCode = "*********";
-    }
-    else {
-      this.visibleCourseCode = 'visibility'
-      this.fakeCourseCode = this.course.courseCode;
+  openUsersWorks(courseId: number, taskId: number) {
+    this.router.navigate(['task/works', {courseId: courseId, taskId: taskId}]);
+  }
+
+  deleteCourse(courseId: number) {
+    var deleting = window.confirm('Do you want to delete this course?');
+    if (deleting) {
+      this.courseService.deleteCourse(courseId).subscribe(result => {
+
+      });
+      this.router.navigate(['/home'])
     }
   }
 
-  openUsersWorks(courseId: number, taskId: number) {
-    this.router.navigate(['task/works', {courseId: courseId, taskId: taskId}]);
+  showCourseCodeDialog(){
+    const dialogRef = this.dialog.open(CourseCodeDialogComponent, {
+      width: '20%',
+      data: {
+        courseCode: this.course.courseCode
+      }
+    });
   }
 
 

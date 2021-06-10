@@ -31,17 +31,6 @@ export class CoursesListComponent implements OnInit {
     })
   }
 
-  deleteCourse(event: any) {
-    var deleting = window.confirm('Do you want to delete this course?');
-    if (deleting) {
-      var courseId = event.target.value;
-      this.courseService.deleteCourse(courseId).subscribe(result => {
-        this.courses = this.courses.filter(function(value, index, arr) {
-          return courseId != value.id;
-        })
-      });
-    }
-  }
 
   viewCourse(course: any, owner: boolean) {
     if (owner)

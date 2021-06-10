@@ -1,11 +1,20 @@
 <mat-card>
 
-  <h1 align="center">{{course.tag}}</h1>
-
-  <hr class="my-1">
-  <div id="visibility_div"> Course Code: {{fakeCourseCode}}
-    <mat-icon  id="visibility_icon" (click)="changeCourseCodeVisibility()">{{visibleCourseCode}}</mat-icon>
-  </div>
+  <h1 id="courseHeading"align="center">{{course.tag}}
+    <button id="course-options-button" mat-fab color="primary" [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button mat-menu-item value="{{course.id}}" (click)="deleteCourse(course.id)">
+        <mat-icon>delete</mat-icon>
+        <span>Delete Course</span>
+      </button>
+      <button mat-menu-item (click)="showCourseCodeDialog()">
+        <mat-icon>visibility</mat-icon>
+        <span>View Course Code</span>
+      </button>
+    </mat-menu>
+  </h1>
 
 </mat-card>
 
@@ -13,7 +22,7 @@
   <div>
     <div class="taskHeading">
       <h1>{{task.tag}}</h1>
-      <button id ="menuButton" mat-button [matMenuTriggerFor]="menu">
+      <button id="menuButton" mat-button [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
