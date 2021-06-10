@@ -5,7 +5,8 @@
   <p>Related Files</p>
   <ul>
     <li *ngFor="let file of files">
-      <mat-progress-bar [value]="file.progress"></mat-progress-bar>
+      {{file.data.name}}
+      <mat-progress-bar [value]="file.data.progress"></mat-progress-bar>
       <span id="file-label">
 
                     </span>
@@ -13,7 +14,7 @@
   </ul>
   <button mat-button color="warn" (click)="onClick()">
     <mat-icon>file_upload</mat-icon>
-    Upload
+    Upload Files
   </button>
   <input type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="*/*"
          style="display:none;"/>
