@@ -1,7 +1,10 @@
 <h1 mat-dialog-title>Add task</h1>
 <div mat-dialog-content id="createTaskConent">
   <p>Task name</p>
-  <input matInput [(ngModel)]="data.tag">
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.tag" [formControl]="taskNameFormControl">
+  </mat-form-field>
+
   <p>Related Files</p>
   <ul>
     <li *ngFor="let file of files">

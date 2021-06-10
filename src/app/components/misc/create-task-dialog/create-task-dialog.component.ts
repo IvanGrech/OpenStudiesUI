@@ -3,6 +3,7 @@ import {CourseService} from "../../../services/course.service";
 import {MAT_DIALOG_DATA} from '@angular/material';
 import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
+import {FormControl, Validators} from "@angular/forms";
 
 
 @Component({
@@ -16,6 +17,13 @@ export class CreateTaskDialogComponent implements OnInit {
   files = [];
 
   private data: any;
+  taskNameMaxLength: number = 32;
+  taskNameMinLength: number = 3;
+
+  taskNameFormControl = new FormControl('', [
+    Validators.required,
+    Validators.maxLength(this.taskNameMaxLength),
+    Validators.minLength(this.taskNameMinLength)]);
 
   constructor(@Inject(MAT_DIALOG_DATA) public injectedData: any, private courseService: CourseService, private router: Router, public dialogRef: MatDialogRef<CreateTaskDialogComponent>) {
   }
@@ -40,19 +48,21 @@ export class CreateTaskDialogComponent implements OnInit {
   }
 
   addTask() {
-    this.courseService.addCourseTask(this.injectedData.courseId, this.data).subscribe(response => {
-      let taskId = response;
-      if (this.files !== null && this.files[0] !== undefined) {
-        this.files.forEach((currentFile) => {
-          let formData = new FormData();
-          formData.append('file', currentFile.data);
-          this.courseService.addCourseTaskFile(this.injectedData.courseId, taskId, formData).subscribe(fileResponse => {
-          });
-        })
-      }
-      this.dialogRef.close();
-      this.router.navigate(['/home'])
-    });
+    if (this.taskNameFormControl.errors == null) {
+      this.courseService.addCourseTask(this.injectedData.courseId, this.data).subscribe(response => {
+        let taskId = response;
+        if (this.files !== null && this.files[0] !== undefined) {
+          this.files.forEach((currentFile) => {
+            let formData = new FormData();
+            formData.append('file', currentFile.data);
+            this.courseService.addCourseTaskFile(this.injectedData.courseId, taskId, formData).subscribe(fileResponse => {
+            });
+          })
+        }
+        this.dialogRef.close();
+        this.router.navigate(['/home'])
+      });
+    }
   }
 
 }
