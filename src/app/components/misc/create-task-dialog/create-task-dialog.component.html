@@ -2,8 +2,6 @@
 <div mat-dialog-content id="createTaskConent">
   <p>Task name</p>
   <input matInput [(ngModel)]="data.tag">
-  <p>Description</p>
-  <input matInput [(ngModel)]="data.description">
   <p>Related Files</p>
   <ul>
     <li *ngFor="let file of files">
