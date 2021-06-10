@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {CourseService} from "../../services/course.service";
 import {MatTableDataSource} from "@angular/material/table";
+import {FormControl, Validators} from "@angular/forms";
 
 
 export interface User {
@@ -25,6 +26,15 @@ export class UsersTasksComponent implements OnInit {
   displayedColumns: string[] = ['firstName', 'lastName', 'grade', 'fileNames'];
   private users: User[] = [];
   private usersAndTasks: any[];
+  maxGrade: number = 100;
+  minGrade: number = 0;
+
+  submitGradeFormControl = new FormControl('', [
+    Validators.required,
+    Validators.max(this.maxGrade),
+    Validators.min(this.minGrade),
+    Validators.pattern("^[0-9]*$")
+  ]);
 
   constructor(private route: ActivatedRoute, private courseService: CourseService) {
   }
@@ -67,10 +77,11 @@ export class UsersTasksComponent implements OnInit {
   }
 
   submitGrade(userId: number, grade: string) {
-    this.courseService.saveGradeForUser(this.taskId, userId, Number(grade)).subscribe(response => {
+    if (this.submitGradeFormControl.errors == null) {
+      this.courseService.saveGradeForUser(this.taskId, userId, Number(grade)).subscribe(response => {
 
-    });
-
+      });
+    }
   }
 
 

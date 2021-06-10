@@ -13,7 +13,7 @@
     <td mat-cell *matCellDef="let element">
       <form class="grade-form">
         <mat-form-field class="full-width">
-          <input #gradeInput matInput value="{{element.grade}}">
+          <input #gradeInput matInput value="{{element.grade}}" [formControl]="submitGradeFormControl">
         </mat-form-field>
         <button id="submit-button" mat-raised-button color="primary" (click)="submitGrade(element.id, gradeInput.value)">Submit</button>
       </form>
