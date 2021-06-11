@@ -3,6 +3,16 @@
   justify-content: left;
 }
 
+#courseHeading{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#course-options-button{
+  margin-left: 70%;
+}
+
 .course-tasks{
   border-block: 3px solid black;
   margin: 4rem 10rem;

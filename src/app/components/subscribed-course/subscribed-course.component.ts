@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CourseService} from "../../services/course.service";
 import {MatDialog} from "@angular/material/dialog";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AddTaskAnswerDialogComponent} from "../misc/add-task-answer-dialog/add-task-answer-dialog.component";
 
 @Component({
@@ -15,7 +15,7 @@ export class SubscribedCourseComponent implements OnInit {
   private tasks: any[];
   private courseGrades: any;
 
-  constructor(private courseService: CourseService, public dialog: MatDialog, private route: ActivatedRoute) {
+  constructor(private courseService: CourseService, public dialog: MatDialog, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -31,6 +31,12 @@ export class SubscribedCourseComponent implements OnInit {
     this.courseService.getCourseGradesForCurrentUser(this.course.id).subscribe(response => {
       this.courseGrades = response;
     });
+  }
+
+  unsubscribeCourse(courseId: number) {
+    this.courseService.unsubscribeCourse(courseId).subscribe((response)  => {
+      this.router.navigate(['/mycourses']);
+    })
   }
 
   addTaskAnswer(taskId: number) {
