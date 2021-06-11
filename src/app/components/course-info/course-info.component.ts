@@ -92,10 +92,12 @@ export class CourseInfoComponent implements OnInit {
     });
   }
 
-  deleteTaskFile(taskId: number, fileName: string) {
+  deleteTaskFile(task: any, fileName: string) {
     if (window.confirm("Are you sure you want to delete this file?")) {
-      this.courseService.deleteTaskFile(taskId, fileName).subscribe((response) => {
-
+      this.courseService.deleteTaskFile(task.id, fileName).subscribe((response) => {
+        task.fileNames = task.fileNames.filter(function (value, index, arr) {
+          return fileName != value;
+        })
       });
     }
   }
