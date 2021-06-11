@@ -4,7 +4,7 @@
 
 <div class="course-tasks" *ngFor="let task of tasks; let index = index">
   <div>
-    <div class="taskHeading" matBadge="{{courseGrades.gradeList[index]}}" matBadgeOverlap="false">
+    <div class="taskHeading" matBadge="{{courseGrades.gradeList[index]}}" matBadgeSize="large">
       <h1>{{task.tag}}</h1>
       <button id ="menuButton" mat-button [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>
