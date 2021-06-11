@@ -4,13 +4,17 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu" xPosition="before">
-      <button mat-menu-item value="{{course.id}}" (click)="deleteCourse(course.id)">
-        <mat-icon>delete</mat-icon>
-        <span>Delete Course</span>
+      <button mat-menu-item (click)="addTask()">
+        <mat-icon>add</mat-icon>
+        <span>Add Task</span>
       </button>
       <button mat-menu-item (click)="showCourseCodeDialog()">
         <mat-icon>visibility</mat-icon>
         <span>View Course Code</span>
+      </button>
+      <button mat-menu-item value="{{course.id}}" (click)="deleteCourse(course.id)">
+        <mat-icon>delete</mat-icon>
+        <span>Delete Course</span>
       </button>
     </mat-menu>
   </h1>
